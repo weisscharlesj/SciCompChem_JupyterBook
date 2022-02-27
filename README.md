@@ -1,1 +1,0 @@
-# SciCompChem_JupyterBook
