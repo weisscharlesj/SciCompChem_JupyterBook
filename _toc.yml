@@ -4,18 +4,18 @@
 format: jb-book
 root: intro
 chapters:
-- file: Chapter_00_Notebook/Chap_00_Notebook
-- file: Chapter_01_Notebook/Chap_01_Notebook
-- file: Chapter_02_Notebook/Chap_02_Notebook
-- file: Chapter_03_Notebook/Chap_03_Notebook
-- file: Chapter_04_Notebook/Chap_04_Notebook
-- file: Chapter_05_Notebook/Chap_05_Notebook
-- file: Chapter_06_Notebook/Chap_06_Notebook
-- file: Chapter_07_Notebook/Chap_07_Notebook
-- file: Chapter_08_Notebook/Chap_08_Notebook
-- file: Chapter_09_Notebook/Chap_09_Notebook
-- file: Chapter_10_Notebook/Chap_10_Notebook
-- file: Chapter_11_Notebook/Chap_11_Notebook
-- file: Chapter_12_Notebook/Chap_12_Notebook
-- file: Chapter_13_Notebook/Chap_13
+- file: notebooks/chapter_00/chap_00_notebook
+- file: notebooks/chapter_01/chap_01_notebook
+- file: notebooks/chapter_02/chap_02_notebook
+- file: notebooks/chapter_03/chap_03_notebook
+- file: notebooks/chapter_04/chap_04_notebook
+- file: notebooks/chapter_05/chap_05_notebook
+- file: notebooks/chapter_06/chap_06_notebook
+- file: notebooks/chapter_07/chap_07_notebook
+- file: notebooks/chapter_08/chap_08_notebook
+- file: notebooks/chapter_09/chap_09_notebook
+- file: notebooks/chapter_10/chap_10_notebook
+- file: notebooks/chapter_11/chap_11_notebook
+- file: notebooks/chapter_12/chap_12_notebook
+- file: notebooks/chapter_13/chap_13
 
