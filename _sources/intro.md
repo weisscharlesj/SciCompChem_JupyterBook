@@ -41,15 +41,15 @@ While great efforts have gone into ensuring that all the code in this book works
 The code in this version of the book has been most recently tested with the following software versions but will likely work with other versions.
 
 - Python – 3.8.11
-- NumPy – 1.21.2
-- SciPy – 1.7.1
-- Pandas – 1.3.2
-- Matplotlib – 3.4.3
+- NumPy – 1.22.2
+- SciPy – 1.8.0
+- Pandas – 1.4.1
+- Matplotlib – 3.5.1
 - Seaborn – 0.11.2
-- Scikit-image – 0.18.2
-- Scikit-learn – 0.24.2
+- Scikit-image – 0.19.2
+- Scikit-learn – 1.0.2
 - NMRglue – 0.8
-- Spyder – 4.2.5
+- Spyder – 5.2.2
 
 ## Acknowledgements
 
