@@ -117,11 +117,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.24957141"
-     inkscape:cx="-342.58731"
-     inkscape:cy="110.1889"
+     inkscape:zoom="0.86627379"
+     inkscape:cx="201.43747"
+     inkscape:cy="125.24909"
      inkscape:document-units="mm"
-     inkscape:current-layer="g836"
+     inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      units="in"
@@ -155,14 +155,14 @@
     <text
        xml:space="preserve"
        style="font-size:14.1111px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;fill:#000000;stroke-width:0.264583"
-       x="13.194456"
+       x="16.248726"
        y="57.850956"
        id="text835"><tspan
          sodipodi:role="line"
          id="tspan833"
-         x="13.194456"
+         x="16.248726"
          y="57.850956"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.1111px;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#000000;stroke-width:0.264583">SciCompChem</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.1111px;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;stroke-width:0.264583">SciCompChem</tspan></text>
     <g
        id="g836"
        transform="matrix(2.2969654,0,0,2.2969654,10.222065,-15.109308)">
