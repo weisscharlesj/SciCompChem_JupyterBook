@@ -96,7 +96,7 @@
          offset="0"
          id="stop4029" />
       <stop
-         style="stop-color:#9d9d9d;stop-opacity:1"
+         style="stop-color:#e5e5e5;stop-opacity:1"
          offset="1"
          id="stop4031" />
     </linearGradient>
@@ -117,11 +117,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.5491979"
-     inkscape:cx="166.21504"
-     inkscape:cy="130.06731"
+     inkscape:zoom="1.163226"
+     inkscape:cx="145.28561"
+     inkscape:cy="139.6977"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g836"
      inkscape:document-rotation="0"
      showgrid="false"
      units="in"
@@ -166,8 +166,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-13.70433,3.4677696)"
-     sodipodi:insensitive="true">
+     transform="translate(-13.70433,3.4677696)">
     <text
        xml:space="preserve"
        style="font-size:14.1111px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;fill:#000000;stroke-width:0.264583"
@@ -209,24 +208,24 @@
          d="M 15.320823,18.561079 H 17.62424"
          style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.391821;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <circle
-         style="fill:#0061d0;fill-opacity:1;stroke:none;stroke-width:0.348286;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:#0061d0;fill-opacity:1;stroke:#000000;stroke-width:0.34828561;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path1460"
          cx="17.362061"
          cy="6.4041209"
          r="1.1358955" />
       <circle
          r="0.7951144"
-         cy="8.8763638"
-         cx="-21.203384"
+         cy="9.4955235"
+         cx="-24.749035"
          id="path1460-2"
-         style="fill:#0061d0;fill-opacity:1;stroke:none;stroke-width:0.348286;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:#0061d0;fill-opacity:1;stroke:#000000;stroke-width:0.348286;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          transform="scale(-1,1)" />
       <circle
          r="0.7951144"
-         cy="12.139617"
-         cx="-30.28257"
+         cy="5.9929519"
+         cx="-29.467737"
          id="path1460-2-7"
-         style="fill:#0061d0;fill-opacity:1;stroke:none;stroke-width:0.348286;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:#0061d0;fill-opacity:1;stroke:#000000;stroke-width:0.348286;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          transform="scale(-1,1)" />
       <path
          inkscape:export-ydpi="300"
