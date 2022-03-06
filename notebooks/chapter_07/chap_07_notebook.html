@@ -475,7 +475,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="chapter-7-image-processing-analysis">
 <span id="id1"></span><h1>Chapter 7: Image Processing &amp; Analysis<a class="headerlink" href="#chapter-7-image-processing-analysis" title="Permalink to this headline">¶</a></h1>
-<p>Images are a major data format in chemistry. They can be electron microscope images of a surface, photos of a reaction, or images from fluorescence microscopy. Image processing and analysis can be performed using software like Photoshop or <a class="reference external" href="https://www.gimp.org/">GIMP</a>, but this can be tedious and subjective when done manually. A better alternative is to have software automate the entire process to provide consistent, precise, and objective processing of images and taking measurements of their features.</p>
+<p>Images are a major data format in chemistry and other sciences. They can be electron microscope images of a surface, photos of a reaction, or images from fluorescence microscopy. Image processing and analysis can be performed using software like Photoshop or <a class="reference external" href="https://www.gimp.org/">GIMP</a>, but this can be tedious and subjective when done manually. A better alternative is to have software automate the entire process to provide consistent, precise, and objective processing of images and taking measurements of their features.</p>
 <p>Among the more popular Python library for performing scientific image analysis is scikit-image. This is a library specifically designed for scientific image analysis and includes a wide variety of tools for the processing and extracting information from images. Examples of tools in scikit-image include functions for boundary detection, object counting, entropy quantification, color space conversion, image comparison, and many others. Even though there are other Python libraries for working with images, such as <a class="reference external" href="https://pillow.readthedocs.io/en/4.2.x/">pillow</a>, scikit-image is designed for scientific image analysis while pillow is intended for more fundamental operations such as image rotation and cropping.</p>
 <p>Unlike NumPy which automatically imports all modules with the library, scikit-image requires each module be imported explicitly. For example, if the user wants to import the <code class="docutils literal notranslate"><span class="pre">color</span></code> module, it is imported using the following code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">color</span>
@@ -485,17 +485,9 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">color</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">io</span>
 </pre></div>
 </div>
-<p>Because we will be doing some plotting, this chapter assumes the following matplotlib import and that inline plotting is enabled. In addition, there are functions inside scikit-image that are not in a module, so we also need to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">skimage</span></code> as well.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="kn">import</span> <span class="nn">skimage</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">color</span>
+<p>We can also import a single function from a module using the follwoing  code structure.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.module</span> <span class="kn">import</span> <span class="n">function</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p><strong>Table 1</strong> Scikit-Image Modules</p>
 <table class="colwidths-auto table">
@@ -561,10 +553,22 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
+<p>This chapter assumes the following imports. Because we will be doing some plotting, this includes the following matplotlib import and that inline plotting is enabled. In addition, there are functions inside scikit-image that are not in a module, so we also need to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">skimage</span></code> as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">skimage</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">color</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Despite the power and utility of the scikit-image library, there is a significant amount of image processing and analysis that can be performed using NumPy functionality. This is especially true being that scikit-image imports/stores images as NumPy arrays.</p>
 <div class="section" id="basic-image-structure">
 <span id="id2"></span><h2>7.1 Basic Image Structure<a class="headerlink" href="#basic-image-structure" title="Permalink to this headline">¶</a></h2>
-<p>Most images are <em>raster</em> images, which are essentially a grid of pixels where each location on the grid is a number describing that pixel. If the image is a grayscale image, these values represent how light or dark each pixel is; and if it is a color image, the value(s) at each location describe the color. Figure 1 shows a grayscale photo of a flask containing crystals, with a 10 <span class="math notranslate nohighlight">\(\times\)</span> 10 pixel excerpt showing the brightness values from the photo.</p>
+<p>Most images are <em>raster</em> images, which are essentially a grid of pixels where each location on the grid is a number describing that pixel. If the image is a grayscale image, these values represent how light or dark each pixel is; and if it is a color image, the value(s) at each location describe the color. Figure 1 shows a grayscale photo of a flask containing crystals, with a 10 <span class="math notranslate nohighlight">\(\times\)</span> 10 pixel excerpt showing the brightness values from the photo. While there is another major class of images known as <em>vector</em> images, we will restrict ourself to dealing with rastor images in this chapter as primary scientific data tend to be rastor images.</p>
 <p><img alt="" src="../../_images/image_data_graphic.png" /></p>
 <p><strong>Figure 1</strong> An excerpts of values from a grayscale image showing values representing the brightness of each pixel.</p>
 <div class="section" id="loading-images">
@@ -578,10 +582,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa188a5a7f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde65a497f0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_5_1.png" src="../../_images/chap_07_notebook_5_1.png" />
+<img alt="../../_images/chap_07_notebook_7_1.png" src="../../_images/chap_07_notebook_7_1.png" />
 </div>
 </div>
 <p>If we take a closer look at the data contained inside the lunar surface image, we find a two-dimensional NumPy array filled with integers ranging from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 255.</p>
@@ -612,21 +616,21 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa188d6f4f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde65e853a0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_9_1.png" src="../../_images/chap_07_notebook_9_1.png" />
+<img alt="../../_images/chap_07_notebook_11_1.png" src="../../_images/chap_07_notebook_11_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="color-images">
 <span id="id4"></span><h3>7.1.2 Color Images<a class="headerlink" href="#color-images" title="Permalink to this headline">¶</a></h3>
-<p>Color images are slightly more complicated to represent because all colors cannot be represented by single integers from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 255. Probably the most popular way to digitally encode colors is <em>RGB</em> which describes every color as a combination of red, green, and blue (Figure 2). These are also known as <em>color channels</em>, and this is typically how computer monitors display colors. If you look close enough at the screen, which may require a magnifying glass for high resolution displays, you can see that every pixel is really made up of three lights: a red, a green, and a blue. You combine them to generate a net perceived color. Being that every pixel now has three values to describe it, a NumPy array that defines a color image is three dimensional. The first two dimensions are the height and width of the image, and the third dimension contains each of the three color channels.</p>
+<p>Color images are slightly more complicated to represent because all colors cannot be represented by single integers from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 255. Probably the most popular way to digitally encode colors is <em>RGB</em> which describes every color as a combination of red, green, and blue (Figure 2). These are also known as <em>color channels</em>, and this is typically how computer monitors display colors. If you look close enough at the screen, which may require a magnifying glass for high resolution displays, you can see that every pixel is really made up of three lights: a red, a green, and a blue. Ther perceived color is a mixture or blend of the red, green, and blue values. Being that every pixel now has three values to describe it, a NumPy array that defines a color image is three dimensional. The first two dimensions are the height and width of the image, and the third dimension contains values from each of the three color channels.</p>
 <p><img alt="" src="../../_images/image_data_graphic_color.png" /></p>
 <p><strong>Figure 2</strong> An excerpts of the red, green, and blue color channels for a small portion of a color image. The values in each channel represent the brightness of that color in each pixel.</p>
 <p>By scikit-image convention, the encoding of color images in arrays is shown below, and the colors are in the order red, green, and then blue.</p>
 <p><code class="docutils literal notranslate"><span class="pre">[row,</span> <span class="pre">column,</span> <span class="pre">channel]</span></code></p>
-<p>We can look at an example of a color photo by loading an image from the Hubble space telescope.</p>
+<p>We can look at an example of a color photo by loading an image from the Hubble space telescope. This image is included with the scikit-image library for users to experiment with.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hubble</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">hubble_deep_field</span><span class="p">()</span>
@@ -635,10 +639,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa1850016a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde620016a0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_11_1.png" src="../../_images/chap_07_notebook_11_1.png" />
+<img alt="../../_images/chap_07_notebook_13_1.png" src="../../_images/chap_07_notebook_13_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -701,7 +705,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>Looking at the array, you will notice that it is indeed three-dimensional with values residing in triplets. You may also notice that the numbers are rather small because most pixels in this particular image are near black. If we want to look at just the red values of the image, this can be accomplish by slicing the array.  The red is the first layer in the third dimension, so we should slice it hubble <code class="docutils literal notranslate"><span class="pre">[:,</span> <span class="pre">:,</span> <span class="pre">0]</span></code>. The brighter a group of pixels in the red channel image, the more red color that is present in that region.</p>
+<p>Looking at the array, you will notice that it is indeed three-dimensional with values residing in triplets. You may also notice that the numbers are rather small because most pixels in this particular image are near black. If we want to look at just the red values of the image, this can be accomplish by slicing the array.  The red is the first layer in the third dimension, so we should slice it <code class="docutils literal notranslate"><span class="pre">hubble[:,</span> <span class="pre">:,</span> <span class="pre">0]</span></code>. The brighter a group of pixels in the red channel image, the more red color that is present in that region.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hubble</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">])</span>
@@ -709,16 +713,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa18506f580&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde6206e640&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_14_1.png" src="../../_images/chap_07_notebook_14_1.png" />
+<img alt="../../_images/chap_07_notebook_16_1.png" src="../../_images/chap_07_notebook_16_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="external-images">
 <span id="id5"></span><h3>7.1.3 External Images<a class="headerlink" href="#external-images" title="Permalink to this headline">¶</a></h3>
-<p>Alternatively, images can be loaded from an external source using the <code class="docutils literal notranslate"><span class="pre">io.imread()</span></code> function provided by scikit-image. This function requires one argument to tell scikit-image which image the user wants to load. If your Jupyter notebook is in the same directory as the image you want to load, you can simply input the full file name, including the extension, as a string. Otherwise, you will need to include the full path to the file in addition to the name. Below an image showing a flask full of hexakis(acetonitrile)Ni(II) bis(tetraflurorborate) crystals is read into Python.</p>
+<p>Alternatively, images can be loaded from an external source using the <code class="docutils literal notranslate"><span class="pre">io.imread()</span></code> function provided by scikit-image. This function requires one argument to tell scikit-image which image the user wants to load. If your Jupyter notebook is in the same directory as the image you want to load, you can simply input the full file name, including the extension, as a string. Otherwise, you will need to include the full path to the file in addition to the name. Below an image showing a flask full of [Ni(CH<span class="math notranslate nohighlight">\(_3\)</span>CN)<span class="math notranslate nohighlight">\(_6\)</span>][BF<span class="math notranslate nohighlight">\(_4\)</span>]<span class="math notranslate nohighlight">\(_2\)</span> crystals is read into Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flask</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;data/flask.png&#39;</span><span class="p">)</span>
@@ -727,13 +731,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa185737490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde62737490&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_16_1.png" src="../../_images/chap_07_notebook_16_1.png" />
+<img alt="../../_images/chap_07_notebook_18_1.png" src="../../_images/chap_07_notebook_18_1.png" />
 </div>
 </div>
-<p>If we look at the array for the flask image below, you will notice that this is a three-dimensional array with four color channels. This can happen in some file types such as PNG where a fourth <em>alpha color channel</em> is supported making the coding RGBA. This channel measures opacity… that is, how non-transparent a pixel is. All of the pixels in this image are fully opaque which is represented by all <code class="docutils literal notranslate"><span class="pre">255</span></code>. If the image was fully transparent, the third values would be all zeros, and anything in between would be translucent. Portable Network Graphics (PNG) images support an alpha channel as do many image formats, but JPG/JPEG images do not support this feature.</p>
+<p>If we look at the array for the flask image below, you will notice that this is a three-dimensional array with four color channels. This can happen in some file types such as Portable Network Graphics (PNG) where a fourth <em>alpha color channel</em> is supported making the coding RGBA. This channel measures opacity… that is, how non-transparent a pixel is. All of the pixels in this image are fully opaque which is represented by all <code class="docutils literal notranslate"><span class="pre">255</span></code>. If the image was fully transparent, the third values would be all zeros, and anything in between would be translucent. PNG images support an alpha channel as do many image formats, but JPG/JPEG images do not support this feature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flask</span>
@@ -807,10 +811,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fa1890d8730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fde661ec730&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_20_1.png" src="../../_images/chap_07_notebook_20_1.png" />
+<img alt="../../_images/chap_07_notebook_22_1.png" src="../../_images/chap_07_notebook_22_1.png" />
 </div>
 </div>
 <p>To change colormaps, input the name of a different colormap as a string in the optional <code class="docutils literal notranslate"><span class="pre">cmap</span></code> argument (e.g., <code class="docutils literal notranslate"><span class="pre">plt.imshow(hubble[:,:,0],</span> <span class="pre">cmap='magma')</span></code>). See <a class="reference external" href="https://matplotlib.org/examples/color/colormaps_reference.html">https://matplotlib.org/examples/color/colormaps_reference.html</a> for a list of available colormaps. It is strongly encouraged to use one of the <em>perceptually uniform</em> colormaps because they are more accurately interpreted by humans and also show up as a smooth, interpretable gradient when printed on a black-and-white printer. Below is the display of the Hubble image red channel using the <code class="docutils literal notranslate"><span class="pre">Reds</span></code> colormap.</p>
@@ -821,16 +825,20 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa189a8ceb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde66b80d90&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_22_1.png" src="../../_images/chap_07_notebook_22_1.png" />
+<img alt="../../_images/chap_07_notebook_24_1.png" src="../../_images/chap_07_notebook_24_1.png" />
 </div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To reverse the direction of any matplotlib colormap, include an underscore after the colormap name. For example, in the above example with the <code class="docutils literal notranslate"><span class="pre">Reds</span></code> colormap, the larger the value, the more red the pixel representing the value becomes. If you use <code class="docutils literal notranslate"><span class="pre">Reds_</span></code>, the larger the value, the <em>less</em> red the pixel representing the value becomes.</p>
 </div>
 </div>
 <div class="section" id="saving-images">
 <span id="id7"></span><h3>7.1.5 Saving Images<a class="headerlink" href="#saving-images" title="Permalink to this headline">¶</a></h3>
-<p>After processing an image, it is sometimes helpful to save the image to disk for records, reports, and presentations. Being that the images are ndarrays, the <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> function works just fine if executed in the same Jupyter cell as the <code class="docutils literal notranslate"><span class="pre">imshow()</span></code> function. Alternatively, scikit-image provides an image saving function <code class="docutils literal notranslate"><span class="pre">io.imsave(file_name,</span> <span class="pre">array)</span></code> that operates similarly as <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> except with a couple image-specific arguments. One key difference is that <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> does not take an array argument but instead assumes you want the recently displayed image saved while <code class="docutils literal notranslate"><span class="pre">io.imsave(file_name,</span> <span class="pre">array)</span></code> takes an array and can save an image even if it has not been displayed in the Jupyter notebook. Check the directory containing the Jupyter notebook, and there should be a new file titled <em>new_image.png</em>.</p>
+<p>After processing an image, it is sometimes helpful to save the image to disk for records, reports, and presentations. Being that the images are ndarrays, the <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> function works just fine if executed in the same Jupyter cell as the <code class="docutils literal notranslate"><span class="pre">io.imshow()</span></code> function. Alternatively, scikit-image provides an image saving function <code class="docutils literal notranslate"><span class="pre">io.imsave(file_name,</span> <span class="pre">array)</span></code> that operates similarly as <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> except with a couple image-specific arguments. One key difference is that <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> does not take an array argument but instead assumes you want the recently displayed image saved while <code class="docutils literal notranslate"><span class="pre">io.imsave(file_name,</span> <span class="pre">array)</span></code> takes an array and can save an image even if it has not been displayed in the Jupyter notebook. Check the directory containing the Jupyter notebook, and there should be a new file titled <em>new_image.png</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="s1">&#39;new_img.png&#39;</span><span class="p">,</span> <span class="n">hubble</span><span class="p">)</span>
@@ -846,7 +854,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="colors">
 <span id="id9"></span><h3>7.2.1 Colors<a class="headerlink" href="#colors" title="Permalink to this headline">¶</a></h3>
 <p>There are numerous ways to represent colors in digital data. The RGB color space is undoubtably one of the most popular color spaces, but there are others that you may encounter such as HSV (hue, saturation, value) or XYZ. Scikit-image provides functions in the <code class="docutils literal notranslate"><span class="pre">color</span></code> module for easily converting between these color spaces, and Table 2 lists some common functions. See the <a class="reference external" href="https://scikit-image.org/">scikit-image website</a> for a more complete list.</p>
-<p><strong>Table 2</strong> Common Functions from the color Module</p>
+<p><strong>Table 2</strong> Common Functions from the <code class="docutils literal notranslate"><span class="pre">color</span></code> Module</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Function</p></th>
@@ -854,16 +862,16 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">rgb2gray</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">color.rgb2gray()</span></code></p></td>
 <td class="text-align:left"><p>Coverts from RGB to grayscale</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">gray2rgb</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">color.gray2rgb()</span></code></p></td>
 <td class="text-align:left"><p>Coverts grayscale to RGB; by just replicating the gray values into three color channels</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">hsv2rbg</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">color.hsv2rbg()</span></code></p></td>
 <td class="text-align:left"><p>HSV to RGB conversion</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">xyz2rgb</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">color.xyz2rgb()</span></code></p></td>
 <td class="text-align:left"><p>XYZ to RGB conversion</p></td>
 </tr>
 </tbody>
@@ -897,7 +905,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="encoding">
 <span id="id10"></span><h3>7.2.2 Encoding<a class="headerlink" href="#encoding" title="Permalink to this headline">¶</a></h3>
-<p><em>Encoding</em> is how the values are presented in the image array. The two most common are integers from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 255 or floats from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 1. However, there are other ranges outlined in Table 3. Though you may never encounter some, it is good to be aware that they exist in case you need to deal with them. The difference between signed integers (<code class="docutils literal notranslate"><span class="pre">int</span></code>) and unsigned integers (<code class="docutils literal notranslate"><span class="pre">uint</span></code>) is that unsigned integers are only positive integers starting with zero while signed integers are both positive and negative centered approximately around zero. The approximate part is because there are equal numbers of positive and negative integers, and being that zero is a positive integer, zero is not the exact center. To determine what the range of values is for an image, scikit-image provides the function <code class="docutils literal notranslate"><span class="pre">skimage.dtype.limits()</span></code>.</p>
+<p><em>Encoding</em> is how the values are presented in the image array. The two most common are integers from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 255 or floats from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 1. However, there are other ranges outlined in Table 3. Though you may have never encounter some, it is good to be aware that they exist in case you need to deal with them. The difference between signed integers (<code class="docutils literal notranslate"><span class="pre">int</span></code>) and unsigned integers (<code class="docutils literal notranslate"><span class="pre">uint</span></code>) is that unsigned integers are only positive integers starting with zero while signed integers are both positive and negative centered approximately around zero. The approximate part is because there are equal numbers of positive and negative integers, and being that zero is a positive integer, zero is not the exact center. To determine what the range of values is for an image, scikit-image provides the function <code class="docutils literal notranslate"><span class="pre">skimage.dtype.limits()</span></code>.</p>
 <p>Scikit-image also provides some convenient functions for converting to various value ranges described in Table 3. These functions are not contained in a module, so you will need to just do an <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">skimage</span></code> to get access to them, which was done at the start of this chapter. The one format that probably needs commenting on is the Boolean format. In this encoding, every pixel is a <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> value, which is equivalent to saying <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code>. This is for black-and-white images where each pixel is one of two possible values.</p>
 <p><strong>Table 3</strong> Scikit-Image Functions for Converting Data Types</p>
 <table class="colwidths-auto table">
@@ -907,22 +915,22 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">img_as_ubyte</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">skimage.img_as_ubyte()</span></code></p></td>
 <td class="text-align:left"><p>Converts to integers from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 255</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">img_as_uint</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">skimage.img_as_uint()</span></code></p></td>
 <td class="text-align:left"><p>Converts to integers from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 65535</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">img_as_int</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">skimage.img_as_int()</span></code></p></td>
 <td class="text-align:left"><p>Converts to integers from -32768 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 32767</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">img_as_bool</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">akimage.img_as_bool()</span></code></p></td>
 <td class="text-align:left"><p>Converts to boolean (i.e., <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>) format</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">img_as_float32</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">skimage.img_as_float32()</span></code></p></td>
 <td class="text-align:left"><p>Converts to floats from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 1 with 32-bit precision</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">img_as_float64</span></code> or <code class="docutils literal notranslate"><span class="pre">img_as_float</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">skimage.img_as_float64()</span></code> or <code class="docutils literal notranslate"><span class="pre">img_as_float</span></code></p></td>
 <td class="text-align:left"><p>Converts to floats from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 1 with 64-bit precision</p></td>
 </tr>
 </tbody>
@@ -956,7 +964,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="image-contrast">
 <span id="id11"></span><h3>7.2.3 Image Contrast<a class="headerlink" href="#image-contrast" title="Permalink to this headline">¶</a></h3>
 <p>Before trying to extract certain types of information or identify features in an image, it is sometimes helpful to first increase the contrast of an image. There are a number of ways of doing this including thresholding and modification of the image histogram. Some approaches can be performed using NumPy array manipulation, but scikit-image also provides convenient functions designed for these task.</p>
-<p><em>Thresholding</em> can be used to generate a black-and-white image (not grayscale) by converting gray values at or below a brightness threshold to black and above the threshold to white. The threshold can be set manually or by an algorithm that chooses an optimal value customized to each image. We will start with manually setting a threshold. The grayscale image generated from <code class="docutils literal notranslate"><span class="pre">rgb2gray()</span></code> is encoded with floats from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 1, so a threshold of 0.65 is chosen using trial-and-error. A black-and-white image is then generated as a Boolean. The resulting black-and-white image is shown below.</p>
+<p><em>Thresholding</em> can be used to generate a black-and-white image (i.e., not grayscale) by converting gray values at or below a brightness threshold to black and above the threshold to white. The threshold can be set manually or by an algorithm that chooses an optimal value customized to each image. We will start with manually setting a threshold. The grayscale image generated from <code class="docutils literal notranslate"><span class="pre">rgb2gray()</span></code> is encoded with floats from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 1, so a threshold of 0.65 is chosen using trial-and-error. A black-and-white image is then generated as a Boolean. The resulting black-and-white image is shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chem</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">immunohistochemistry</span><span class="p">()</span>
@@ -966,10 +974,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa189bfbdc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde66ceedf0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_32_1.png" src="../../_images/chap_07_notebook_32_1.png" />
+<img alt="../../_images/chap_07_notebook_35_1.png" src="../../_images/chap_07_notebook_35_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -981,14 +989,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa18b183130&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde686e2130&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_33_1.png" src="../../_images/chap_07_notebook_33_1.png" />
+<img alt="../../_images/chap_07_notebook_36_1.png" src="../../_images/chap_07_notebook_36_1.png" />
 </div>
 </div>
 <p>The appropriate threshold may vary from image to image, so manually setting a value is sometimes not practical. Scikit-image provides a number of functions in the filters module for automatically choosing a threshold show below in Table 4. If you are not sure which of the functions below to use, there is a <code class="docutils literal notranslate"><span class="pre">try_all_filters()</span></code> function in the filters module that will try seven of them and plot the results for easy comparison.</p>
-<p><strong>Table 4</strong> Threshold Functions from the filters Module</p>
+<p><strong>Table 4</strong> Threshold Functions from the <code class="docutils literal notranslate"><span class="pre">filters</span></code> Module</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Functions</p></th>
@@ -996,42 +1004,40 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">threshold_isodata()</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">filters.threshold_isodata()</span></code></p></td>
 <td class="text-align:left"><p>Threshold value from ISODATA method</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">threshold_li()</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">filters.threshold_li()</span></code></p></td>
 <td class="text-align:left"><p>Threshold value from Li’s minimum cross entropy method</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">threshold_local()</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">filters.threshold_local()</span></code></p></td>
 <td class="text-align:left"><p>Threshold mask (array) from local neighborhoods</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">threshold_mean()</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">filters.threshold_mean()</span></code></p></td>
 <td class="text-align:left"><p>Threshold value from mean grayscale value</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">threshold_minimum()</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">filters.threshold_minimum()</span></code></p></td>
 <td class="text-align:left"><p>Threshold value from minimum method</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">threshold_niblack()</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">filters.threshold_niblack()</span></code></p></td>
 <td class="text-align:left"><p>Threshold mask (array) from the Niblack method</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">threshold_otsu()</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">filters.threshold_otsu()</span></code></p></td>
 <td class="text-align:left"><p>Threshold value from Otsu’s method</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">threshold_sauvola()</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">filters.threshold_sauvola()</span></code></p></td>
 <td class="text-align:left"><p>Threshold mask (array) from Sauvola method</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">threshold_triangle()</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">filters.threshold_triangle()</span></code></p></td>
 <td class="text-align:left"><p>Threshold value from triangle method</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">threshold_yen()</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">filters.threshold_yen()</span></code></p></td>
 <td class="text-align:left"><p>Threshold value from Yen method</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:center"><p>*Threshold value functions provides a single threshold value while threshold masks provides arrays of values the size of the image. They are used in the same fashion except that the latter provides a per-pixel threshold.</p></td>
-<td class="text-align:left"><p></p></td>
 </tr>
 </tbody>
 </table>
-<p>Below, the Otsu filter is demonstrated.</p>
+<p>*Threshold value functions provides a single threshold value while threshold masks provides arrays of values the size of the image. They are used in the same fashion except that the latter provides a per-pixel threshold.</p>
+<p>Below, we can see the Otsu filter being demonstrated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">filters</span>
@@ -1042,10 +1048,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa18c755490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde69616490&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_35_1.png" src="../../_images/chap_07_notebook_35_1.png" />
+<img alt="../../_images/chap_07_notebook_38_1.png" src="../../_images/chap_07_notebook_38_1.png" />
 </div>
 </div>
 <p>Another method for increasing contrast is by modifying the image histogram. If the values from an image are plotted in a histogram, you will see something that looks like the following.</p>
@@ -1063,7 +1069,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Counts&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_37_1.png" src="../../_images/chap_07_notebook_37_1.png" />
+<img alt="../../_images/chap_07_notebook_40_1.png" src="../../_images/chap_07_notebook_40_1.png" />
 </div>
 </div>
 <p>This is a plot of how many of each type of brightness value is present in the image. There are practically no pixels in the image that are black (value 0) or completely white (value 255), but there are two main collections of gray values. The contrast of this image can be increased by performing histogram equalization, which spreads these values out more evenly. The <code class="docutils literal notranslate"><span class="pre">exposure</span></code> module provides an <code class="docutils literal notranslate"><span class="pre">equalize_hist()</span></code> function for this task.</p>
@@ -1075,10 +1081,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa18d9868e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde69bde8e0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_39_1.png" src="../../_images/chap_07_notebook_39_1.png" />
+<img alt="../../_images/chap_07_notebook_42_1.png" src="../../_images/chap_07_notebook_42_1.png" />
 </div>
 </div>
 <p>Histogram equalization does not produce a black-and-white image, but it does make the dark values darker and the light values lighter. If we look at the histogram for this image, it will be more even as shown below.</p>
@@ -1095,7 +1101,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Counts&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_41_1.png" src="../../_images/chap_07_notebook_41_1.png" />
+<img alt="../../_images/chap_07_notebook_44_1.png" src="../../_images/chap_07_notebook_44_1.png" />
 </div>
 </div>
 </div>
@@ -1122,13 +1128,20 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa181fcf9a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde54dfd9a0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_43_1.png" src="../../_images/chap_07_notebook_43_1.png" />
+<img alt="../../_images/chap_07_notebook_46_1.png" src="../../_images/chap_07_notebook_46_1.png" />
 </div>
 </div>
-<p>An image of black dots on a white background is imported above, but the blob detection algorithms work best with light colors on a dark background. We will invert the image below by subtracting the values from the maximum value.</p>
+<p>An image of black dots on a white background is imported above, but the blob detection algorithms work best with light colors on a dark background. We will invert the image below by subtracting the values from the maximum value or using the <code class="docutils literal notranslate"><span class="pre">color.rgb2gray()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dots_inverted</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span><span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">dots</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dots_inverted</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">dots</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dots_inverted</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span><span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">dots</span><span class="p">)</span>
@@ -1137,14 +1150,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/cw/g8p9ghtd3_7b10t_kws_b86h0000gp/T/ipykernel_18649/1840800149.py:1: FutureWarning: Non RGB image conversion is now deprecated. For RGBA images, please use rgb2gray(rgba2rgb(rgb)) instead. In version 0.19, a ValueError will be raised if input image last dimension length is not 3.
-  dots_inverted = color.rgb2gray(255 - dots)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde5512e1c0&gt;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa1823190d0&gt;
-</pre></div>
-</div>
-<img alt="../../_images/chap_07_notebook_45_2.png" src="../../_images/chap_07_notebook_45_2.png" />
+<img alt="../../_images/chap_07_notebook_48_1.png" src="../../_images/chap_07_notebook_48_1.png" />
 </div>
 </div>
 <p>To detect the blobs, we will use the <code class="docutils literal notranslate"><span class="pre">blob_dog()</span></code> function as demonstrated below. The function allows for a <code class="docutils literal notranslate"><span class="pre">threshold</span></code> argument to be set to adjust the sensitivity of the algorithm in finding blobs. A lower threshold results in smaller or less intense blobs included in the returned array.</p>
@@ -1173,7 +1182,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>The returned array includes three columns corresponding to the y position, x position, and intensity of each spot, respectively. The x and y coordinates for an image starts at the top left corner while typical plots start at the bottom left. Keep this in mind when comparing the coordinates to the image. To find the number of spots, determine length of the array.</p>
+<p>The returned array includes three columns corresponding to the <span class="math notranslate nohighlight">\(y\)</span> position, <span class="math notranslate nohighlight">\(x\)</span> position, and intensity of each spot, respectively. The <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinates for an image starts at the top left corner while typical plots start at the bottom left. Keep this in mind when comparing the coordinates to the image. To find the number of spots, determine length of the array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">blobs</span><span class="p">)</span>
@@ -1189,7 +1198,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="entropy-analysis">
 <span id="id14"></span><h3>7.3.2 Entropy Analysis<a class="headerlink" href="#entropy-analysis" title="Permalink to this headline">¶</a></h3>
-<p>The term <em>entropy</em> outside of the physical sciences is used to simply represent a quantification of disorder or irregularity. In image analysis, this disorder is the amount of brightness variation within a region of the image. As you will see below, entropy is the highest near the boundaries and in noisy areas of the photograph. This makes an entropy analysis useful for edge detection, checking for image quality, and detecting alterations to an image.</p>
+<p>The term <em>entropy</em> outside of the physical sciences is used to represent a quantification of disorder or irregularity. In image analysis, this disorder is the amount of pixel (brightness or color) variation within a region of the image. As you will see below, entropy is the highest near the boundaries and in noisy areas of a photograph. This makes an entropy analysis useful for edge detection, checking for image quality, and detecting alterations to an image.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">filters.rank</span></code> modules contains the entropy function shown below. It works by going through the image pixel-by-pixel and calculating the entropy in the neighborhood. The <em>neighborhood</em> is the area around each pixel. An entropy value is recored in the new array at each location and can be plotted to generate an entropy map. The entropy function takes two required arguments: the image (<code class="docutils literal notranslate"><span class="pre">img</span></code>) and a description of the neighborhood called a <em>structured element</em> (<code class="docutils literal notranslate"><span class="pre">selem</span></code>).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filters</span><span class="o">.</span><span class="n">rank</span><span class="o">.</span><span class="n">entropy</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
 </pre></div>
@@ -1222,28 +1231,29 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The neighborhood is defined as an array of ones and zeros. In this case, it is a disk of radius 5. The user can adjust this value to the needs of the analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">chem_gray</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chem_gray_int</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">img_as_ubyte</span><span class="p">(</span><span class="n">chem_gray</span><span class="p">)</span> <span class="c1">#convert img to int</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">chem_gray_int</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/Demos/opt/anaconda3/lib/python3.9/site-packages/IPython/core/interactiveshell.py:3457: UserWarning: Possible precision loss converting image of type float64 to uint8 as required by rank filters. Convert manually using skimage.util.img_as_ubyte to silence this warning.
-  exec(code_obj, self.user_global_ns, self.user_ns)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fde1f66e7c0&gt;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fa1428ae130&gt;
-</pre></div>
+<img alt="../../_images/chap_07_notebook_56_1.png" src="../../_images/chap_07_notebook_56_1.png" />
 </div>
-<img alt="../../_images/chap_07_notebook_53_2.png" src="../../_images/chap_07_notebook_53_2.png" />
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The step above converting the image repesentation from floats to integers is not strictly required, but the <code class="docutils literal notranslate"><span class="pre">entropy()</span></code> function will generate a loss of precision warning if you do not.</p>
 </div>
 <p>Examination of the image shows that there is an increase in entropy near the edges of the features in the image as expected. There are two regions (blue) that contain unusually low entropy. If you look back at the original image, these regions are comparatively homogeneous in color.</p>
 </div>
 <div class="section" id="eccentricity">
 <span id="id15"></span><h3>7.3.3 Eccentricity<a class="headerlink" href="#eccentricity" title="Permalink to this headline">¶</a></h3>
-<p><em>Eccentricity</em> is the measurement of how non-circular an object is. It runs from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 1 with zero being a perfect circle and large values representing more eccentric objects. This can be useful for quantifying the shape of nanoparticles or droplets of liquid. The measure module from scikit-image provides an easy method of measuring eccentricity. First, let us first import an image of ovals for an example. Alternatively, you are welcome to use the <code class="docutils literal notranslate"><span class="pre">coins</span></code> image from the data module, but this will require some preprocessing such as increasing the contrast.</p>
+<p><em>Eccentricity</em> is the measurement of how non-circular an object is. It runs from 0 <span class="math notranslate nohighlight">\(\rightarrow\)</span> 1 with zero being a perfect circle and large values representing more eccentric objects. This can be useful for quantifying the shape of nanoparticles or droplets of liquid. The <code class="docutils literal notranslate"><span class="pre">measure</span></code> module from scikit-image provides an easy method of measuring eccentricity. First, let us first import an image of ovals for an example. Alternatively, you are welcome to use the <code class="docutils literal notranslate"><span class="pre">coins</span></code> image from the <code class="docutils literal notranslate"><span class="pre">data</span></code> module, but this will require some preprocessing such as increasing the contrast.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ovals</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;data/ovals.png&#39;</span><span class="p">)</span>
@@ -1252,13 +1262,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa14292f9a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde1fd96970&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_56_1.png" src="../../_images/chap_07_notebook_56_1.png" />
+<img alt="../../_images/chap_07_notebook_60_1.png" src="../../_images/chap_07_notebook_60_1.png" />
 </div>
 </div>
-<p>The main function for measuring eccentricity is the <code class="docutils literal notranslate"><span class="pre">regionsprops()</span></code> function, but this function by itself cannot find the objects. Luckily, there is another function in the measure module called label that will do exactly this, and this function requires the regions to be light with dark backgrounds. The following inverts the light and dark and also truncates the alpha channel from the RGBA image.</p>
+<p>The main function for measuring eccentricity is the <code class="docutils literal notranslate"><span class="pre">regionsprops()</span></code> function, but this function by itself cannot find the objects. Luckily, there is another function in the <code class="docutils literal notranslate"><span class="pre">measure</span></code> module called <code class="docutils literal notranslate"><span class="pre">label()</span></code> that will do exactly this, and this function requires the regions to be light with dark backgrounds. The following inverts the light and dark and also truncates the alpha channel from the RGBA image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ovals_invert</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span><span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">ovals</span><span class="p">[:,:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
@@ -1267,13 +1277,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa142c971f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fde1f9fe1c0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_07_notebook_58_1.png" src="../../_images/chap_07_notebook_58_1.png" />
+<img alt="../../_images/chap_07_notebook_62_1.png" src="../../_images/chap_07_notebook_62_1.png" />
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">regionsprops()</span></code> function returns the properties on the two ovals in a list of lists. The first list corresponds to the first object and so on. Each list contains an extensive collection of properties, so it is worth visiting the scikit-image website to see the complete documentation. We are only concerned with eccentricity right now, so we can access the eccentricity of the first object with <code class="docutils literal notranslate"><span class="pre">props[0].eccentricity</span></code>, which gives a value of about 0.95 while the second object has a much lower values of about 0.40. This makes sense being that the first object is very eccentric while the second object is much more circular.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">regionsprops()</span></code> function returns the properties on the two ovals in a list of lists. The first list corresponds to the first object and so on. Each list contains an extensive collection of properties, so it is worth visiting the scikit-image website to see the complete documentation. We are only concerned with eccentricity right now, so we can access the eccentricity of the first object with <code class="docutils literal notranslate"><span class="pre">props[0].eccentricity</span></code>, which gives a value of about 0.95 for the first object while the second object has a much lower values of about 0.40. This makes sense being that the first object is very eccentric while the second object is much more circular.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <span class="n">label</span><span class="p">,</span> <span class="n">regionprops</span>

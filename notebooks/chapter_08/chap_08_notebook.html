@@ -669,7 +669,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="pretty-printing">
 <span id="id4"></span><h3>8.1.2 Pretty Printing<a class="headerlink" href="#pretty-printing" title="Permalink to this headline">¶</a></h3>
-<p>Depending upon settings and version of SymPy, the output may look like Python equations which are not always the easiest to read. If so, you can turn on <em>pretty printing</em>, which will instruct SymPy to render the expressions in more traditional mathematical representations that you might see in a math textbook.</p>
+<p>Depending upon settings and version of SymPy, the output may look like Python equations which are not always the easiest to read. If so, you can turn on <em>pretty printing</em>, shown below, which will instruct SymPy to render the expressions in more traditional mathematical representations that you might see in a math textbook.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">init_printing</span>
 <span class="n">sympy</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
 </pre></div>
@@ -677,7 +677,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="sympy-mathematical-functions">
 <span id="id5"></span><h3>8.1.3 SymPy Mathematical Functions<a class="headerlink" href="#sympy-mathematical-functions" title="Permalink to this headline">¶</a></h3>
-<p>Similar to the math Python module, SymPy contains an assortment of standard mathematical operators such as square root and trigonometric functions. A table of common functions is below. Some of the functions start with a capital letter such as <code class="docutils literal notranslate"><span class="pre">Abs()</span></code>. This is important so that they do not collide with native Python functions if SymPy is imported into the global namespace.</p>
+<p>Similar to the <code class="docutils literal notranslate"><span class="pre">math</span></code> Python module, SymPy contains an assortment of standard mathematical operators such as square root and trigonometric functions. A table of common functions is below. Some of the functions start with a capital letter such as <code class="docutils literal notranslate"><span class="pre">Abs()</span></code>. This is important so that they do not collide with native Python functions if SymPy is imported into the global namespace.</p>
 <p><strong>Table 1</strong> Common SymPy Functions</p>
 <table class="colwidths-auto table">
 <thead>
@@ -709,12 +709,12 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
-<p>It is important to note that any mathematical function operating on a symbol needs to be from the SymPy library. For example, using a cosine function from the <code class="docutils literal notranslate"><span class="pre">math</span></code> library will result in an error.</p>
+<p>It is important to note that any mathematical function operating on a symbol needs to be from the SymPy library. For example, using a <code class="docutils literal notranslate"><span class="pre">math.cos()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">math</span></code> Python modeule will result in an error.</p>
 </div>
 </div>
 <div class="section" id="algebra-in-sympy">
 <span id="id6"></span><h2>8.2 Algebra in SymPy<a class="headerlink" href="#algebra-in-sympy" title="Permalink to this headline">¶</a></h2>
-<p>SymPy is quite capable at algebraic operations and is knowledgeable of common identities such as <span class="math notranslate nohighlight">\(sin(x)^2 + cos(x)^2 = 1\)</span>, but before we proceed with doing algebra in SymPy, we need to cover some basic algebraic methods. These are provided in table 2 which includes polynomial expansion and factoring, expression simplification, and solving equations. The subsequent sections demonstrate each of these.</p>
+<p>SymPy is quite capable at algebraic operations and is knowledgeable of common identities such as <span class="math notranslate nohighlight">\(sin(x)^2 + cos(x)^2 = 1\)</span>, but before we proceed with doing algebra in SymPy, we need to cover some basic algebraic methods. These are provided in Table 2 which includes polynomial expansion and factoring, expression simplification, and solving equations. The subsequent sections demonstrate each of these.</p>
 <p><strong>Table 2</strong> Common Algebraic Methods</p>
 <table class="colwidths-auto table">
 <thead>
@@ -723,16 +723,16 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">expand()</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">sympy.expand()</span></code></p></td>
 <td class="text-align:left"><p>Expand polynomials</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">factor()</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">sympy.factor()</span></code></p></td>
 <td class="text-align:left"><p>Factors polynomials</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">simplify()</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">sympy.simplify()</span></code></p></td>
 <td class="text-align:left"><p>Simplifies the expression</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">solve()</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">sympy.solve()</span></code></p></td>
 <td class="text-align:left"><p>Equates the expression to zero and solves for the requested variable</p></td>
 </tr>
 </tbody>
@@ -773,7 +773,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="simplification">
 <span id="id8"></span><h3>8.2.2 Simplification<a class="headerlink" href="#simplification" title="Permalink to this headline">¶</a></h3>
-<p>SymPy may not always return a mathematical expression in the simplest form. Below is an expression with a simpler form, and if we feed this to SymPy, it is not automatically simplified.</p>
+<p>SymPy may not always return a mathematical expression in the simplest form. Below is an expression with a simpler form, and if we feed this into SymPy, it is not automatically simplified.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">15</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
@@ -800,7 +800,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="solving-equations">
 <span id="id9"></span><h3>8.2.3 Solving Equations<a class="headerlink" href="#solving-equations" title="Permalink to this headline">¶</a></h3>
-<p>SymPy can also solve equations for an unknown variable using the solve() function. The function requires a single expression that is equal to zero. For example, the following solves for <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\(x^2 + 1.4x – 5.76 = 0\)</span>.</p>
+<p>SymPy can also solve equations for an unknown variable using the <code class="docutils literal notranslate"><span class="pre">solve()</span></code> function. The function requires a single expression that is equal to zero. For example, the following solves for <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\(x^2 + 1.4x – 5.76 = 0\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sympy</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">1.4</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">5.76</span><span class="p">)</span>
@@ -930,8 +930,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="mathematical-operations-with-arrays">
 <span id="id12"></span><h3>8.3.1 Mathematical Operations with Arrays<a class="headerlink" href="#mathematical-operations-with-arrays" title="Permalink to this headline">¶</a></h3>
-<p>Being that we are using NumPy arrays, the standard mathematical operations use the <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">‒</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, and <code class="docutils literal notranslate"><span class="pre">**</span></code> operators as demonstrated in chapter 4. There are a few other operations and methods, however, that are important for matrices such as calculating the inverse, determinant, transpose, and the dot product. For these operations, we have the following methods provided by NumPy’s <code class="docutils literal notranslate"><span class="pre">linalg</span></code> module (Table 3) which are demonstrated in the following sections.</p>
-<p><strong>Table 3</strong> Common np.linalg Methods</p>
+<p>Being that we are using NumPy arrays, the standard mathematical operations use the <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">‒</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, and <code class="docutils literal notranslate"><span class="pre">**</span></code> operators as demonstrated in chapter 4. There are a few other operations and methods, however, that are important for matrices such as calculating the inverse, determinant, transpose, and dot product. For these operations, we have the following methods provided by NumPy’s <code class="docutils literal notranslate"><span class="pre">linalg</span></code> module, Table 3, which are demonstrated in the following sections.</p>
+<p><strong>Table 3</strong> Common <code class="docutils literal notranslate"><span class="pre">np.linalg</span></code> Methods</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Method</p></th>
@@ -939,21 +939,21 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">dot()</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">np.linalg.dot()</span></code></p></td>
 <td class="text-align:left"><p>Calculates the dot product</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">inv()</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">np.linalg.inv()</span></code></p></td>
 <td class="text-align:left"><p>Returns the inverse of an array</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">det()</span></code></p></td>
+<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">np.linalg.det()</span></code></p></td>
 <td class="text-align:left"><p>Returns the determinant of an array</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">solve()</span></code></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">np.linalg.solve()</span></code></p></td>
 <td class="text-align:left"><p>Solves a system of linear equations</p></td>
 </tr>
 </tbody>
 </table>
-<p>In addition, it is worth reiterating that there is a general NumPy array method <code class="docutils literal notranslate"><span class="pre">transpose()</span></code> that will transpose or rotate the array around the diagonal. There is a convenient <code class="docutils literal notranslate"><span class="pre">array.T</span></code> shortcut that is often used. See section 4.2.3 for details.</p>
+<p>In addition, it is worth reiterating that there is a general NumPy array method <code class="docutils literal notranslate"><span class="pre">transpose()</span></code> that will transpose or rotate the array around the diagonal. There is a convenient <code class="docutils literal notranslate"><span class="pre">array.T</span></code> shortcut that is often used. See <a class="reference internal" href="../chapter_04/chap_04_notebook.html#id10"><span class="std std-ref">section 4.2.3</span></a> for details.</p>
 </div>
 <div class="section" id="solving-systems-of-equations">
 <span id="id13"></span><h3>8.3.2 Solving Systems of Equations<a class="headerlink" href="#solving-systems-of-equations" title="Permalink to this headline">¶</a></h3>
@@ -964,7 +964,7 @@ const thebe_selector_output = ".output, .cell_output"
 \[ 2x + 7y + z = 13 \]</div>
 <div class="math notranslate nohighlight">
 \[ −10x + −11y + 11z = −21 \]</div>
-<p>These equations can be rewritten in matrix or array form as follows.</p>
+<p>These equations can be rewritten in matrix or array form as follows with the left matrix holding the coefficients.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \left[ \begin{array}{ccc} 6 &amp; 10 &amp; -5 \\ 2 &amp; 7 &amp; 1 \\ -10 &amp; -11 &amp; 11 \end{array} \right]
 \cdot
@@ -974,7 +974,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We will call the first array <code class="docutils literal notranslate"><span class="pre">M</span></code>, the second <code class="docutils literal notranslate"><span class="pre">X</span></code>, and the third <code class="docutils literal notranslate"><span class="pre">y</span></code>, so we get</p>
 <div class="math notranslate nohighlight">
 \[ M \cdot X = y \]</div>
-<p>We can solve for X by multiplying (<em>dot product</em>) both sides by the inverse of M (i.e., <span class="math notranslate nohighlight">\(M^{-1}\)</span>). Anything multiplied by its inverse is the identity, so <span class="math notranslate nohighlight">\(M^{-1} \cdot M = 1 \)</span>.</p>
+<p>We can solve for X by multiplying (<em>dot product</em>) both sides by the inverse of M (i.e., <span class="math notranslate nohighlight">\(M^{-1}\)</span>). Anything multiplied by its inverse is the identity, so <span class="math notranslate nohighlight">\(M^{-1} \cdot M\)</span> equals the matrix version of 1.</p>
 <div class="math notranslate nohighlight">
 \[ M^{-1} \cdot M \cdot X = M^{-1} \cdot y \]</div>
 <div class="math notranslate nohighlight">
@@ -1019,7 +1019,7 @@ const thebe_selector_output = ".output, .cell_output"
 \[ A_{\lambda 2} = \epsilon_{x \lambda 2} C_x +  \epsilon_{y \lambda 2} C_y +  \epsilon_{z \lambda 2} C_z \]</div>
 <div class="math notranslate nohighlight">
 \[ A_{\lambda 3} = \epsilon_{x \lambda 3} C_x +  \epsilon_{y \lambda 3} C_y +  \epsilon_{z \lambda 3} C_z \]</div>
-<p>As long as we know the molar absorptivity of each analyte at each wavelength from pure samples, we have three unknowns and three equations, so we can calculate the concentration of each component. The above equations can be represented as matrices shown below.</p>
+<p>As long as we know the molar absorptivity of each analyte at each wavelength collected from pure samples, we have three unknowns and three equations, so we can calculate the concentration of each component. The above equations can be represented as matrices shown below.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \left[ \begin{array}{ccc} \epsilon_{x \lambda 1} &amp; \epsilon_{y \lambda 1} &amp; \epsilon_{z \lambda 1} \\ \epsilon_{x \lambda 2} &amp; \epsilon_{y \lambda 2} &amp; \epsilon_{z \lambda 2} \\ \epsilon_{x \lambda 3} &amp; \epsilon_{y \lambda 3} &amp; \epsilon_{z \lambda 3} \end{array} \right]
 \cdot
@@ -1108,11 +1108,28 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">A</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">C</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">6</span><span class="p">)))</span><span class="o">.</span><span class="n">T</span>
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.0e-06, 1.0e+00],
+       [3.0e-06, 1.0e+00],
+       [6.0e-06, 1.0e+00],
+       [1.5e-05, 1.0e+00],
+       [2.5e-05, 1.0e+00],
+       [3.5e-05, 1.0e+00]])
 </pre></div>
 </div>
 </div>
 </div>
-<p>For the sake of readability, the calculation using the normal equation has been split in half.</p>
+<p>For the sake of readability, the calculation using the normal equation has been split in half as shown below.</p>
+<div class="math notranslate nohighlight">
+\[ u = (X^T X)^{-1} \]</div>
+<div class="math notranslate nohighlight">
+\[ v = X^T y \]</div>
+<div class="math notranslate nohighlight">
+\[ u\cdot v = \theta \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
@@ -1134,12 +1151,40 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>A plot of the linear regression and the data points is shown above, and the linear regression returned a molar absorptivity of 1.55 <span class="math notranslate nohighlight">\(\times\)</span> 10<span class="math notranslate nohighlight">\(^4\)</span> cm<span class="math notranslate nohighlight">\(^{-1}\)</span>M<span class="math notranslate nohighlight">\(^{-1}\)</span>.The regression also returned a <span class="math notranslate nohighlight">\(y\)</span>-intercept value of -5.45 <span class="math notranslate nohighlight">\(\times\)</span> 10<span class="math notranslate nohighlight">\(^{-6}\)</span>, which is below the detection limits making it practically zero. This makes sense because the <span class="math notranslate nohighlight">\(y\)</span>-intercept should always be approximately zero if the background is subtracted.</p>
+<p>A plot of the linear regression and the data points is shown below, and the linear regression returned a molar absorptivity of 1.55 <span class="math notranslate nohighlight">\(\times\)</span> 10<span class="math notranslate nohighlight">\(^4\)</span> cm<span class="math notranslate nohighlight">\(^{-1}\)</span>M<span class="math notranslate nohighlight">\(^{-1}\)</span>.The regression also returned a <span class="math notranslate nohighlight">\(y\)</span>-intercept value of -5.45 <span class="math notranslate nohighlight">\(\times\)</span> 10<span class="math notranslate nohighlight">\(^{-6}\)</span>, which is below the detection limits making it practically zero. This makes sense because the <span class="math notranslate nohighlight">\(y\)</span>-intercept should always be approximately zero if the background is subtracted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4e-5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1.55886e4</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">5.45355e-6</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Linear Regression&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Points&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Concentration, M&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Absorbance, au&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">cw</span><span class="o">/</span><span class="n">g8p9ghtd3_7b10t_kws_b86h0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_2194</span><span class="o">/</span><span class="mf">1597303122.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4e-5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1.55886e4</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">5.45355e-6</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Linear Regression&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Points&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;plt&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="calculus">
 <span id="id15"></span><h2>8.4 Calculus<a class="headerlink" href="#calculus" title="Permalink to this headline">¶</a></h2>
-<p>SymPy and SciPy both contain functionality for performing calculus operations. We will start with SymPy for the symbolic math and switch over to SciPy for the strictly numerical work in section 8.4.3. In this section (8.4), we will be working with the radial density functions (<span class="math notranslate nohighlight">\(\psi\)</span>) for hydrogen atomic orbitals. The squares of these functions (<span class="math notranslate nohighlight">\(\psi ^2\)</span>) provide the probability of finding an electron with respect to distance from the nucleus. While these equations are available in various textbooks, SymPy provides a physics module with a <code class="docutils literal notranslate"><span class="pre">R_nl()</span></code> function for generating these equations based on the principle (<em>n</em>) quantum number, angular (<em>l</em>) quantum number, and the atomic number (<em>Z</em>). For example, to generate the function for the 2p orbital of hydrogen, <em>n</em> = 2, <em>l</em> = 1, and <em>Z</em> = 1.</p>
+<p>SymPy and SciPy both contain functionality for performing calculus operations. We will start with SymPy for the symbolic math and switch over to SciPy for the strictly numerical work in <a class="reference internal" href="#id18"><span class="std std-ref">section 8.4.3</span></a>. In this section, we will be working with the radial density functions (<span class="math notranslate nohighlight">\(\psi\)</span>) for hydrogen atomic orbitals. The squares of these functions (<span class="math notranslate nohighlight">\(\psi ^2\)</span>) provide the probability of finding an electron with respect to distance from the nucleus. While these equations are available in various textbooks, SymPy provides a <code class="docutils literal notranslate"><span class="pre">physics</span></code> module with a <code class="docutils literal notranslate"><span class="pre">R_nl()</span></code> function for generating these equations based on the principle (<em>n</em>) quantum number, angular (<em>l</em>) quantum number, and the atomic number (<em>Z</em>). For example, to generate the function for the 2p orbital of hydrogen, <em>n</em> = 2, <em>l</em> = 1, and <em>Z</em> = 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy.physics.hydrogen</span> <span class="kn">import</span> <span class="n">R_nl</span>
@@ -1231,7 +1276,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Probability Density&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/chap_08_notebook_69_1.png" src="../../_images/chap_08_notebook_69_1.png" />
+<img alt="../../_images/chap_08_notebook_70_1.png" src="../../_images/chap_08_notebook_70_1.png" />
 </div>
 </div>
 <p>The radius is in Bohrs (<span class="math notranslate nohighlight">\(a_0\)</span>) which is equal to approximately 0.53 angstroms.</p>
@@ -1251,7 +1296,7 @@ const thebe_selector_output = ".output, .cell_output"
 \[\displaystyle 0.0526530173437111\]</div>
 </div>
 </div>
-<p>There is a 5.27% probability finding an electron between the nucleus and the radius of maximum probability. This is probably a bit surprising. Let’s see the probability of finding an electron between 0 and 10 Bohrs from the nucleus.</p>
+<p>There is a 5.27% probability finding an electron between the nucleus and the radius of maximum probability. This is probably may be a bit surprising, but examination of the radial density plot reveals that the radius of maximum probabily is quite close to the nucleus with a significant amount of density beyond the maximum radius. Let’s see the probability of finding an electron between 0 and 10 Bohrs from the nucleus.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sympy</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">R_21</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span>
@@ -1264,7 +1309,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>There is a 97.1% chance of finding the electron between 0 and 10 angstroms.</p>
-<p>The SciPy library also includes functions in the <code class="docutils literal notranslate"><span class="pre">integrate</span></code> module for integrating mathematical functions. Information can be found on the SciPy documentation page listed at the end of this chapter under Further Reading.</p>
+<p>The SciPy library also includes functions in the <code class="docutils literal notranslate"><span class="pre">integrate</span></code> module for integrating mathematical functions. Information can be found on the SciPy documentation page listed at the end of this chapter under <a class="reference internal" href="#further-reading08"><span class="std std-ref">Further Reading</span></a>.</p>
 </div>
 <div class="section" id="integrating-sampled-data">
 <span id="id18"></span><h3>8.4.3 Integrating Sampled Data<a class="headerlink" href="#integrating-sampled-data" title="Permalink to this headline">¶</a></h3>
@@ -1340,10 +1385,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd3e71ccd00&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc454c1ad30&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/chap_08_notebook_79_1.png" src="../../_images/chap_08_notebook_79_1.png" />
+<img alt="../../_images/chap_08_notebook_80_1.png" src="../../_images/chap_08_notebook_80_1.png" />
 </div>
 </div>
 <p>Above is a plot of the peaks with respect to the index values (not ppm). To integrate under each of the triplet peaks, first we need the index values for the edges of each peak. Below is a list, <code class="docutils literal notranslate"><span class="pre">i</span></code>, that provides reasonable boundaries, and a plot is below with these edges marked in orange squares.</p>
@@ -1358,7 +1403,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/chap_08_notebook_81_0.png" src="../../_images/chap_08_notebook_81_0.png" />
+<img alt="../../_images/chap_08_notebook_82_0.png" src="../../_images/chap_08_notebook_82_0.png" />
 </div>
 </div>
 <p>Integrations under sampled data do not include the values between data points, so these regions are estimated based on assumptions. The <code class="docutils literal notranslate"><span class="pre">trapz()</span></code> function assumes that any data point between known points lies directly between the known data points (i.e., linear interpolation) as shown below by the blue lines.</p>
@@ -1382,10 +1427,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/chap_08_notebook_84_0.png" src="../../_images/chap_08_notebook_84_0.png" />
+<img alt="../../_images/chap_08_notebook_85_0.png" src="../../_images/chap_08_notebook_85_0.png" />
 </div>
 </div>
-<p>Alternatively, the simps function uses the <em>Simpson’s rule</em> which estimates the data between known points using quadratic interpolation shown below.</p>
+<p>Alternatively, the <code class="docutils literal notranslate"><span class="pre">simps()</span></code> function uses the <em>Simpson’s rule</em> which estimates the data between known points using quadratic interpolation shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">nmr</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">nmr</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;quadratic&#39;</span><span class="p">)</span>
@@ -1399,7 +1444,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/chap_08_notebook_86_0.png" src="../../_images/chap_08_notebook_86_0.png" />
+<img alt="../../_images/chap_08_notebook_87_0.png" src="../../_images/chap_08_notebook_87_0.png" />
 </div>
 </div>
 <p>Both functions take the <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span></code> values in this order. Below, the trapezoidal method is employed.</p>
@@ -1433,7 +1478,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The decay of a radioactive isotope is an example of a first-order reaction because the rate of decay is proportional to the amount of A. First-order reaction rates are described by</p>
 <div class="math notranslate nohighlight">
 \[ Rate = \frac{d[A]}{dt} = -k[A] \]</div>
-<p>where [A] is the concentration (M) of A, <span class="math notranslate nohighlight">\(k\)</span> is the rate constant (1/s), and rate is the change in [A] versus time (M/s). The <code class="docutils literal notranslate"><span class="pre">odeint()</span></code> function below takes a differential equation in the form of a Python function (<code class="docutils literal notranslate"><span class="pre">func</span></code>), the initial values for A (<code class="docutils literal notranslate"><span class="pre">A0</span></code>), and a list or array of the times (t) to calculate the [A] .</p>
+<p>where [A] is the concentration (M) of A, <span class="math notranslate nohighlight">\(k\)</span> is the rate constant (1/s), and rate is the change in [A] versus time (M/s). The <code class="docutils literal notranslate"><span class="pre">odeint()</span></code> function below takes a differential equation in the form of a Python function, <code class="docutils literal notranslate"><span class="pre">func</span></code>, the initial values for A, <code class="docutils literal notranslate"><span class="pre">A0</span></code>, and a list or array of the times,<code class="docutils literal notranslate"><span class="pre">t</span></code>, to calculate the [A] .</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scipy</span><span class="o">.</span><span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">A0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1471,10 +1516,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd3e856deb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc455235730&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_08_notebook_95_1.png" src="../../_images/chap_08_notebook_95_1.png" />
+<img alt="../../_images/chap_08_notebook_96_1.png" src="../../_images/chap_08_notebook_96_1.png" />
 </div>
 </div>
 <p>This approach to kinetic simulations can be adapted to even more complex reactions which are demonstrated in chapter 9.</p>
@@ -1485,7 +1530,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Between SymPy, NumPy, SciPy, and Python’s built-in functionality, there is often more than one way to carry out calculations in Python. For example, finding roots and derivatives of polynomials can be, along with the approaches demonstrated in this chapter, calculated by creating a NumPy <code class="docutils literal notranslate"><span class="pre">Polynomial</span></code> object and using NumPy’s <code class="docutils literal notranslate"><span class="pre">roots()</span></code> and <code class="docutils literal notranslate"><span class="pre">deriv()</span></code> methods, respectively. How you carry out a calculation can often come down to matter of person preference, though there are differences in terms of speed and the output format. Find what works for you and do not necessarily worry if others are doing the same calculations through a different library or set of functions.</p>
 </div>
 <div class="section" id="further-reading">
-<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<span id="further-reading08"></span><h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>SymPy Website. <a class="reference external" href="http://www.sympy.org/en/index.html">http://www.sympy.org/en/index.html</a> (free resource)</p></li>
 <li><p>SciPy and NumPy Documentation Pages. <a class="reference external" href="http://www.sympy.org/en/index.html">https://docs.scipy.org/doc/</a> (free resource)</p></li>

@@ -524,9 +524,6 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="tex2jax_ignore mathjax_ignore section" id="chapter-5-pandas">
 <span id="id1"></span><h1>Chapter 5: Pandas<a class="headerlink" href="#chapter-5-pandas" title="Permalink to this headline">¶</a></h1>
 <p>While NumPy is the foundation of much of the SciPy ecosystem and provides very capable ndarray objects, it has a few shortcomings. The first is that NumPy arrays cannot hold different types of objects in a single array. For example, if we attempt to convert the following list containing integers, floats, and strings into an array, NumPy coverts all elements into strings as a way of making the object types uniform.</p>
-<p>The second shortcoming is that NumPy arrays do not support labels in the data. That is, columns cannot have labels describing what they contain like you might see in a well constructed spreadsheet. This burdens the user to keep track of which column contains what information. Finally, while NumPy contains a wealth of basic tools for working with data, there are still many operations that it does not support like grouping data based on the content of a particular column or the ability to merge two data sets with automatic alignment of analogous data.</p>
-<p>A data scientist named Wes McKinney created the pandas library which provides a wealth of additional tools for working with data, and possibly the most endearing feature, the ability to call data based on labels. Data columns and rows can contain human-readable labels that are used to access the data. Pandas still supports accessing data using indices if the user wishes to go that route, but the user can now access data without knowing which column it is in as long as the user knows the column label.</p>
-<p>By popular convention,1 the pandas library is imported with the pd alias, which is used here. This chapter also assumes the following imports.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;six&#39;</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">]</span>
@@ -556,9 +553,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p>The second shortcoming is that NumPy arrays do not support labels in the data. That is, columns cannot have labels describing what they contain like you might see in a well constructed spreadsheet. This burdens the user to keep track of which column contains what information. Finally, while NumPy contains a wealth of basic tools for working with data, there are still many operations that it does not support like grouping data based on the value of a particular column or the ability to merge two data sets with automatic alignment of analogous data.</p>
+<p>A data scientist named Wes McKinney created the pandas library which provides a wealth of additional tools for working with data, and possibly the most endearing feature, the ability to call data based on labels. Data columns and rows can contain human-readable labels that are used to access the data. Pandas still supports accessing data using indices if the user wishes to go that route, but the user can now access data without knowing which column it is in as long as the user knows the column label.</p>
+<p>By popular convention, the pandas library is imported with the <code class="docutils literal notranslate"><span class="pre">pd</span> <span class="pre">alias</span></code>, which is used here. This chapter also assumes the following imports.</p>
 <div class="section" id="basic-pandas-objects">
 <span id="id2"></span><h2>5.1 Basic Pandas Objects<a class="headerlink" href="#basic-pandas-objects" title="Permalink to this headline">¶</a></h2>
-<p>To support the wealth of features, pandas uses its own objects to hold data called a Series and a DataFrame, which are built on NumPy arrays. Because they are built on NumPy, many of the NumPy functions (e.g., <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>) work on pandas objects. The key difference between the a Series and DataFrame is that a Series is one-dimensional while a DataFrame is two-dimensional because unlike a NumPy array, pandas objects have fixed dimensionality. There is a three-dimensional object called a Panel, but this will not be covered here as it is not often used.</p>
+<p>To support the wealth of features, pandas uses its own objects to hold data called a Series and a DataFrame, which are built on NumPy arrays. Because they are built on NumPy, many of the NumPy functions (e.g., <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>) work on pandas objects. The key difference between the a Series and DataFrame is that a Series is one-dimensional while a DataFrame is two-dimensional. Unlike a NumPy array, pandas objects have fixed dimensionality. There is a three-dimensional object called a <em>Panel</em>, but this will not be covered here as it is not often used.</p>
 <div class="section" id="series">
 <span id="id3"></span><h3>5.1.1 Series<a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h3>
 <p>While the pandas <em>Series</em> is restricted to being a single dimension, it can be as long as necessary to hold the data. A Series containing the atomic masses of the first five elements on the periodic table is generated below using the <code class="docutils literal notranslate"><span class="pre">pd.Series()</span></code> function. This function is always capitalized.</p>
@@ -597,8 +597,8 @@ dtype: float64
 <p>Unlike other multi-element objects seen so far, data in a Series can be accessed using indices different from the default (i.e., 0, 1, 2, etc…) values. That is, custom indices can be assigned using the index argument shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mass2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.01</span><span class="p">,</span><span class="mf">4.00</span><span class="p">,</span><span class="mf">6.94</span><span class="p">,</span><span class="mf">9.01</span><span class="p">,</span><span class="mf">10.81</span><span class="p">],</span>
-<span class="n">index</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;He&#39;</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">,</span> <span class="s1">&#39;Be&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;He&#39;</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">,</span> <span class="s1">&#39;Be&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<span class="n">mass2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.01</span><span class="p">,</span><span class="mf">4.00</span><span class="p">,</span><span class="mf">6.94</span><span class="p">,</span><span class="mf">9.01</span><span class="p">,</span><span class="mf">10.81</span><span class="p">],</span> <span class="n">index</span><span class="p">)</span>
 <span class="n">mass2</span>
 </pre></div>
 </div>
@@ -614,7 +614,7 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>The custom indices can now be used to access an element in a Series. This makes a Series behave something like a dictionary (section 2.2).</p>
+<p>The custom indices can now be used to access an element in a Series. This makes a Series behave something like a dictionary (<a class="reference internal" href="../chapter_02/chap_02_notebook.html#id7"><span class="std std-ref">section 2.2</span></a>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mass2</span><span class="p">[</span><span class="s1">&#39;He&#39;</span><span class="p">]</span>
@@ -675,7 +675,9 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">name</span><span class="p">,</span> <span class="n">AN</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">IE</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;He&#39;</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">,</span> <span class="s1">&#39;Be&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;AN&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">,</span> <span class="s1">&#39;IE&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;He&#39;</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">,</span> <span class="s1">&#39;Be&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">]</span> 
+<span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;AN&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">,</span> <span class="s1">&#39;IE&#39;</span><span class="p">]</span>
+<span class="n">elements</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">name</span><span class="p">,</span> <span class="n">AN</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">IE</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
 <span class="n">elements</span>
 </pre></div>
 </div>
@@ -885,13 +887,10 @@ Name: Li, dtype: object
 </tr>
 </tbody>
 </table>
-<ul class="simple">
-<li><p>i.e., the copy and paste clipboard from your computer</p></li>
-</ul>
 <div class="section" id="general-purpose-delimited-file-reader">
 <span id="id6"></span><h3>5.2.1 General-Purpose Delimited File Reader<a class="headerlink" href="#general-purpose-delimited-file-reader" title="Permalink to this headline">¶</a></h3>
 <p>Before we start with more well-defined file formats, pandas provides a general purpose file reader <code class="docutils literal notranslate"><span class="pre">pd.read_table()</span></code>. This function imports text files where lines represent rows and the data in each row is separated by characters or spaces. The user can designate what character(s) separate the data by using the <code class="docutils literal notranslate"><span class="pre">delimiter</span></code> or <code class="docutils literal notranslate"><span class="pre">sep</span></code> arguments (they do the same thing),  or as an easy way of breaking up data based on spaces, set the  <code class="docutils literal notranslate"><span class="pre">delim_whitespaces</span></code> equal to <code class="docutils literal notranslate"><span class="pre">True</span></code>. The function also includes a series of other arguments listed below in Table 3.</p>
-<p><strong>Table 3</strong> More pd.read_table() Arguments</p>
+<p><strong>Table 3</strong> More <code class="docutils literal notranslate"><span class="pre">pd.read_table()</span></code> Arguments</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Argument</p></th>
@@ -957,13 +956,8 @@ END
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">benz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data/benzene.pdb&#39;</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/cw/g8p9ghtd3_7b10t_kws_b86h0000gp/T/ipykernel_18637/1338474566.py:1: ParserWarning: Falling back to the &#39;python&#39; engine because the &#39;c&#39; engine does not support skipfooter; you can avoid this warning by specifying engine=&#39;python&#39;.
-  benz = pd.read_table(&#39;data/benzene.pdb&#39;, delim_whitespace=True, skiprows=2, skipfooter=13, header=None)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">benz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;data/benzene.pdb&#39;</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+                     <span class="n">skipfooter</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1140,16 +1134,16 @@ END
 </table>
 </div></div></div>
 </div>
-<p>The <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> data are in columns 5, 6, and 7, respectively and can be extracted by indexing as discussed in section 5.1.2.</p>
+<p>The <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> data are in columns 5, 6, and 7, respectively and can be extracted by indexing as discussed in <a class="reference internal" href="#id4"><span class="std std-ref">section 5.1.2</span></a>.</p>
 </div>
 <div class="section" id="comma-separated-values-files">
 <span id="id7"></span><h3>5.2.2 Comma Separated Values Files<a class="headerlink" href="#comma-separated-values-files" title="Permalink to this headline">¶</a></h3>
 <p>Pandas provides a collection of more format-specific functions for reading/writing files. The most popular is possibly the CSV file because it is simple and many scientific instruments support exporting data in this format. To import a CSV file, we will use the <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function. This function is very similar to the <code class="docutils literal notranslate"><span class="pre">read_table()</span></code> function except that a default value for the separator/delimiter is set to a comma. To create a CSV file, use the <code class="docutils literal notranslate"><span class="pre">to_csv()</span></code> method which at a minimum requires the file name and a pandas object with the data.</p>
-<p>We can write the above chemical element data assembled in section 5.1 as shown below. Because we are starting from a pandas object and are using a pandas method, the <code class="docutils literal notranslate"><span class="pre">df.to_csv()</span></code> format is used where df is a DataFrame.</p>
+<p>We can write the above chemical element data assembled in <a class="reference internal" href="#id2"><span class="std std-ref">section 5.1</span></a> as shown below. Because we are starting from a pandas object and are using a pandas method, the <code class="docutils literal notranslate"><span class="pre">df.to_csv()</span></code> format is used where df is a DataFrame.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;elements.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If we check the directory containing the Jupyter notebook, there is a file titled <em>elements.csv</em> that looks like the following. Each row in the DataFrame is a different line in the file, and every column is separated by a comma.</p>
+<p>If we check the directory containing the Jupyter notebook, the data folder contains a file titled <em>elements.csv</em> that looks like the following. Each row in the DataFrame is a different line in the file, and every column is separated by a comma.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>,H,He,Li,Be,B
 name,hydrogen,helium,lithium,berylium,boron
 AN,1,2,3,4,5
@@ -1235,7 +1229,7 @@ IE,13.6,24.6,5.4,9.3,8.3
 </div>
 <div class="section" id="excel-notebook-files">
 <span id="id8"></span><h3>5.2.3 Excel Notebook Files<a class="headerlink" href="#excel-notebook-files" title="Permalink to this headline">¶</a></h3>
-<p>Pandas provides another useful function for importing Excel notebook files (i.e., <em>.xls</em> or <em>.xlsx</em>). Because Excel files can contain multiple sheets, this function is a little more complicated to use. The simplest way to import an excel file is to use <code class="docutils literal notranslate"><span class="pre">pd.read_excel()</span></code> and provide it with the Excel file name.</p>
+<p>Pandas provides another useful function for importing Excel notebook files (i.e., <em>.xls</em> or <em>.xlsx</em>). Because Excel files can contain multiple sheets, this function is a little more complicated to use. The simplest way to import an Excel file is to use <code class="docutils literal notranslate"><span class="pre">pd.read_excel()</span></code> and provide it with the Excel file name.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/test.xls&#39;</span><span class="p">)</span>
@@ -1529,33 +1523,33 @@ IE,13.6,24.6,5.4,9.3,8.3
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.481339</td>
-      <td>-0.923781</td>
-      <td>1</td>
+      <td>0.960640</td>
+      <td>-1.268365</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.880161</td>
-      <td>0.087209</td>
-      <td>1</td>
+      <td>0.482949</td>
+      <td>1.387474</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.915997</td>
-      <td>0.948852</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.915414</td>
-      <td>0.197113</td>
+      <td>0.151013</td>
+      <td>-0.260312</td>
       <td>3</td>
     </tr>
     <tr>
+      <th>3</th>
+      <td>0.136795</td>
+      <td>0.320639</td>
+      <td>0</td>
+    </tr>
+    <tr>
       <th>4</th>
-      <td>0.637039</td>
-      <td>0.049460</td>
-      <td>6</td>
+      <td>0.613278</td>
+      <td>-0.640796</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -1594,33 +1588,33 @@ IE,13.6,24.6,5.4,9.3,8.3
   <tbody>
     <tr>
       <th>995</th>
-      <td>0.745931</td>
-      <td>0.691486</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>996</th>
-      <td>0.265413</td>
-      <td>-1.117420</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>997</th>
-      <td>0.967496</td>
-      <td>0.546329</td>
+      <td>0.951191</td>
+      <td>0.601853</td>
       <td>4</td>
     </tr>
     <tr>
+      <th>996</th>
+      <td>0.377305</td>
+      <td>0.420876</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>997</th>
+      <td>0.059964</td>
+      <td>1.018831</td>
+      <td>2</td>
+    </tr>
+    <tr>
       <th>998</th>
-      <td>0.457418</td>
-      <td>0.782677</td>
-      <td>0</td>
+      <td>0.858650</td>
+      <td>0.921070</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>0.607961</td>
-      <td>0.298058</td>
-      <td>2</td>
+      <td>0.857209</td>
+      <td>-1.309129</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
@@ -1666,44 +1660,44 @@ IE,13.6,24.6,5.4,9.3,8.3
     </tr>
     <tr>
       <th>mean</th>
-      <td>0.500582</td>
-      <td>-0.073925</td>
-      <td>3.033000</td>
+      <td>0.491406</td>
+      <td>0.011301</td>
+      <td>3.068000</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.287481</td>
-      <td>0.995294</td>
-      <td>1.737507</td>
+      <td>0.297779</td>
+      <td>0.991650</td>
+      <td>1.764225</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>0.001153</td>
-      <td>-3.864101</td>
+      <td>0.000925</td>
+      <td>-3.136861</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>0.260849</td>
-      <td>-0.762545</td>
+      <td>0.218982</td>
+      <td>-0.698098</td>
       <td>2.000000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>0.507691</td>
-      <td>-0.045557</td>
+      <td>0.490958</td>
+      <td>0.017187</td>
       <td>3.000000</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>0.741990</td>
-      <td>0.636572</td>
+      <td>0.749950</td>
+      <td>0.714821</td>
       <td>4.000000</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>0.999823</td>
-      <td>3.476034</td>
+      <td>0.999853</td>
+      <td>3.129040</td>
       <td>10.000000</td>
     </tr>
   </tbody>
@@ -1719,23 +1713,23 @@ IE,13.6,24.6,5.4,9.3,8.3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2     242
-3     201
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2     237
+3     217
 4     167
-1     145
-5     106
-6      63
-0      46
-7      18
-8      10
+1     127
+5     104
+6      54
+0      53
+7      29
+8       9
+10      2
 9       1
-10      1
 Name: poisson, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
-<p>Data in DataFrames can be plotting by calling the desired columns of data and feeding them into plotting functions like <code class="docutils literal notranslate"><span class="pre">plt.scatter()</span></code>. The data can also be visualized by using the <code class="docutils literal notranslate"><span class="pre">df.plot(kind=)</span></code> format where df is the DataFrame and kind is the plot type (e.g., <code class="docutils literal notranslate"><span class="pre">'bar'</span></code>, <code class="docutils literal notranslate"><span class="pre">'hist'</span></code>, <code class="docutils literal notranslate"><span class="pre">'scatter'</span></code>, <code class="docutils literal notranslate"><span class="pre">'line'</span></code>, <code class="docutils literal notranslate"><span class="pre">'pie'</span></code>, etc…). However, this is just matplotlib doing the plotting and is largely redundant with other methods already covered. Below is a quick example of the counts data generated above.</p>
+<p>Data in DataFrames can be plotting by calling the desired columns of data and feeding them into plotting functions like <code class="docutils literal notranslate"><span class="pre">plt.scatter()</span></code>. The data can also be visualized by using the <code class="docutils literal notranslate"><span class="pre">df.plot(kind=)</span></code> format where <code class="docutils literal notranslate"><span class="pre">df</span></code> is the DataFrame and <code class="docutils literal notranslate"><span class="pre">kind</span></code> is the plot type (e.g., <code class="docutils literal notranslate"><span class="pre">'bar'</span></code>, <code class="docutils literal notranslate"><span class="pre">'hist'</span></code>, <code class="docutils literal notranslate"><span class="pre">'scatter'</span></code>, <code class="docutils literal notranslate"><span class="pre">'line'</span></code>, <code class="docutils literal notranslate"><span class="pre">'pie'</span></code>, etc…). However, this is just matplotlib doing the plotting and is largely redundant with other methods already covered. Below is a quick example of the counts data generated above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
@@ -1746,7 +1740,7 @@ Name: poisson, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../../_images/chap_05_notebook_55_1.png" src="../../_images/chap_05_notebook_55_1.png" />
+<img alt="../../_images/chap_05_notebook_56_1.png" src="../../_images/chap_05_notebook_56_1.png" />
 </div>
 </div>
 </div>
@@ -2201,6 +2195,7 @@ dtype: object
 </table>
 </div></div></div>
 </div>
+<p>In the second example above, the hydrogen is back despite being previously dropped. This is because the <code class="docutils literal notranslate"><span class="pre">drop()</span></code> method does not by default modify the origional DataFrame. To make the changes perminent, either assigned the new DataFrame to a new variable or add the <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> keyword argument to the above <code class="docutils literal notranslate"><span class="pre">drop()</span></code> function.</p>
 </div>
 <div class="section" id="merge">
 <span id="id17"></span><h3>5.4.4 Merge<a class="headerlink" href="#merge" title="Permalink to this headline">¶</a></h3>
@@ -2399,7 +2394,7 @@ dtype: object
 </div>
 </div>
 </div>
-<p>In the two DataFrames above, each contains data on on cobalt, iron, chromium, and nickel; but the first DataFrame labels metals as <code class="docutils literal notranslate"><span class="pre">element</span></code> while the second labels the metals as <code class="docutils literal notranslate"><span class="pre">metal</span></code>. The following merges the two DataFrames based on values in these two columns.</p>
+<p>In the two DataFrames generated above, each contains data on on cobalt, iron, chromium, and nickel; but the first DataFrame labels metals as <code class="docutils literal notranslate"><span class="pre">element</span></code> while the second labels the metals as <code class="docutils literal notranslate"><span class="pre">metal</span></code>. The following merges the two DataFrames based on values in these two columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comps1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">comps2</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;element&#39;</span><span class="p">,</span><span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;metal&#39;</span><span class="p">)</span>
@@ -2464,7 +2459,68 @@ dtype: object
 </table>
 </div></div></div>
 </div>
-<p>Notice that the values in the <code class="docutils literal notranslate"><span class="pre">element</span></code> and <code class="docutils literal notranslate"><span class="pre">metal</span></code> columns were aligned in the resulting DataFrame. To get rid of one of the redundant columns, just use the <code class="docutils literal notranslate"><span class="pre">drop()</span></code> method described in section 5.4.3.</p>
+<p>Notice that the values in the <code class="docutils literal notranslate"><span class="pre">element</span></code> and <code class="docutils literal notranslate"><span class="pre">metal</span></code> columns were aligned in the resulting DataFrame. To get rid of one of the redundant columns, just use the <code class="docutils literal notranslate"><span class="pre">drop()</span></code> method described in <a class="reference internal" href="#id16"><span class="std std-ref">section 5.4.3</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comps3</span> <span class="o">=</span> <span class="n">comps1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">comps2</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;element&#39;</span><span class="p">,</span><span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;metal&#39;</span><span class="p">)</span>
+<span class="n">comps3</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;metal&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">comps3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>element</th>
+      <th>protons</th>
+      <th>IE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Co</td>
+      <td>27</td>
+      <td>7.88</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Fe</td>
+      <td>26</td>
+      <td>7.90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cr</td>
+      <td>24</td>
+      <td>6.79</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ni</td>
+      <td>28</td>
+      <td>7.64</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </div>
 <div class="section" id="concatenation">
 <span id="id18"></span><h3>5.4.5 Concatenation<a class="headerlink" href="#concatenation" title="Permalink to this headline">¶</a></h3>
