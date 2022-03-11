@@ -1,7 +1,7 @@
 (13)=
 # Chapter 13: Command Line & Spyder
 
-Up to this point, we have been running all of our Python scripts through the IPython environment from either a Jupyter notebook or a Python interpreter. A third way to run Python code is to save it as text files and run the code from the computer's command prompt. The advantage of this approach is that it is more practical for larger scripts and more convenient for doing repetitive tasks like reformatting instrument data. You will need access to the command prompt to run your Python script. If you are using Linux or Mac, launch the Terminal to get access to the Bash command line, and if you are on Windows, you will first need to activate the Bash command line before proceeding.
+Up to this point, we have been running all of our Python scripts through the IPython environment from either a Jupyter notebook or a Python interpreter. A third way to run Python code is to save it as text files and run the code from the computer's command prompt. The advantage of this approach is that it is more practical for larger scripts and more convenient for doing repetitive tasks like reformatting instrument data. You will need access to the command prompt to run your Python script. If you are using Linux or Mac, launch the Terminal to get access to the Bash command line, and if you are on Windows, you will likely first need to activate the Bash command line before proceeding.
 
 (13.1)=
 ## 13.1 Bash Scripting Primer
@@ -21,7 +21,7 @@ From here, you can navigate your file system. The first thing you will want to k
     
     /Users/Me
 
-This means that we are currently in the home directory for the user Me. To determine what is in the directory, we can have its contents listed using the `ls` command.
+This means that we are currently in the home directory for the user Me. To determine what is in the directory, we can list its contents using the `ls` command.
 
     $ ls
 
@@ -35,20 +35,20 @@ You may see files listed in the terminal that you cannot see when manually looki
 (13.1.2)=
 ### 13.1.2 Changing Directory
 
-To change the current working directory, use the cd command. This can be used either incrementally by stepping one directory at a time or by providing the full path name such as /Users/Me/Documents/Scripts/. 
+To change the current working directory, use the `cd` command. This can be used either incrementally by stepping one directory at a time or by providing the full path name such as /Users/Me/Documents/Scripts/. 
 
     $ cd Desktop
 
-This only allows the user to navigate into folders. To back out of a folder, `cd..` (with two periods) is used.
+This only allows the user to navigate into folders. To back out of a folder, `cd ..` (space with two periods) is used.
 
-    $ cd..
+    $ cd ..
 
 There is certainly much more that can be done with Bash scripting, but this is enough of a foundation for you to find and run scripts as we will do below.
 
 (13.2)=
 ## 13.2 Running Scripts
 
-Now that you know the basics of the Bash command line, we can now run our first script. Open a text editor of your choice. It is recommended not to use your regular word processor (e.g., Word, LibreOffice, Pages, etc…) as it may save extra formatting in any text file generated. Most computer operating systems come with a very basic text editor suited for writing code. Save the following as a text file titled `first_script.py`. The `.py` extension does not do anything to the file; it just indicates to other software that this text file is a Python script. 
+Now that you know the basics of the Bash command line, we can now run our first script. Open a text editor of your choice. It is recommended not to use your regular word processor (e.g., Word, LibreOffice, Pages, etc...) as it may save extra formatting in any text file generated. Most computer operating systems come with a very basic text editor suited for writing code. Save the following as a text file titled `first_script.py`. The `.py` extension does not do anything to the file; it just indicates to other software that this text file is a Python script. 
 
 ~~~python
 import random
@@ -62,7 +62,7 @@ Next, open the terminal and navigate to the directory (i.e., folder) containing 
     
     66
       
-You just ran your first script from the command line! The output only includes what you print in the Python script. One key difference between a script run in the command line and Python code run in a Jupyter notebook is that when running from the command line, if you want something displayed, you need to explicitly instruct this action using the print() function. In contrast, the Jupyter notebook automatically prints the output of calculations that are not assigned to variables.
+You just ran your first script from the command line! The output only includes what you print in the Python script. One key difference between a script run in the command line and Python code run in a Jupyter notebook is that when running from the command line, if you want something displayed, you need to explicitly instruct this action using the `print()` function. In contrast, the Jupyter notebook automatically prints the output of calculations that are not assigned to variables.
 
 An alternative way to run the above file without having to navigate to the folder is to provide the file with the full (absolute) path like is shown below.
 
@@ -70,7 +70,7 @@ An alternative way to run the above file without having to navigate to the folde
     
     98
       
-This might seem like a lot of typing. One handy shortcut is to type python and then drag-and-drop the file into the Bash window. This will result in the file path and name being automatically pasted into the command line. 
+This might seem like a lot of typing. One handy shortcut is to type `python` followed by a space and then drag-and-drop the file into the Bash window. This will result in the file path and name being automatically pasted into the command line. 
 
     $ python /Users/Me/Desktop/first_script.py
     
@@ -82,17 +82,17 @@ There are often times when running a script from the command line that you want 
 
 ### 13.3.1 User Inputs
 
-In the event you want to user to be able to input values, Python includes an input() function that prompts the user to provide information. For example, if we want to write a script to calculate molecular weights of simple hydrocarbon molecules based on the number of hydrogen and carbon atoms, it would be helpful to allow the user to input the number of hydrogen and carbon atoms instead of altering the script itself.  The argument inside the `input()` function is what is displayed in front of the user to prompt an input. It is important to note that the `input()` function provides the user input as a string. Being that we are expecting integers, we need to convert these strings to integers before calculating the molecular weight of the molecule as has been done below.
+In the event you want to user to be able to input values, Python includes an `input()` function that prompts the user to provide information. For example, if we want to write a script to calculate molecular weights of simple hydrocarbon molecules based on the number of hydrogen and carbon atoms, it would be helpful to allow the user to input the number of hydrogen and carbon atoms instead of altering the script itself.  The argument inside the `input()` function is what is displayed in front of the user to prompt an input. It is important to note that the `input()` function provides the user input as a string. Being that we are expecting integers, we need to convert these strings to integers before calculating the molecular weight of the molecule as has been done below.
 
 ~~~python
 H = input('H = ')
 C = input('C = ')
-~~~
 
 MW = int(H) * 1.01 + int(C) * 12.01
 print(MW)
+~~~
 
-Save the above script in a text file named MW.py and run it. You are prompted to provide the number of hydrogens and carbons before a molecular weight is calculated and printed. 
+Save the above script in a text file named *MW.py* and run it. You are prompted to provide the number of hydrogens and carbons before a molecular weight is calculated and printed. 
 
     $ python MW.py
       H = 4
@@ -108,9 +108,10 @@ Another approach to allowing the user to provide additional information is to pr
 
     16.05
 
-We can instruct Python to grab the information behind the script file name using the argv function from the sys module. This function brings all information after python as a list which can be accessed using indexing. The above input generates the following list from sys.argv.
+We can instruct Python to grab the information behind the script file name using the `argv()` function from the `sys` module. This function brings all information after `python` as a list which can be accessed using indexing. The above input generates the following list from `sys.argv`.
 
-['MW.py', '4', '1']
+`['MW.py', '4', '1']`
+
 Now it is just a matter of indexing and converting strings to integers as is done below.
 
 ~~~python
@@ -135,7 +136,7 @@ The above method is ideal from accepting file names and extension as they can be
 
 While using a text editor to write your scripts works just fine, you may long for some of the features of Jupyter notebooks like how it automatically color codes text based on syntax and provides easy access to function docstrings. To get some of these features back, you can use an Integrated Development Environment (IDE). There are many to choose from, but here we will address Spyder (Scientific Python Development Environment) as it is specifically tailored to scientific applications and comes with the Anaconda installation of Python.
 
-There are two methods of launching Spyder. The first is to type spyder in the terminal.
+There are two methods of launching Spyder. The first is to type `spyder` in the terminal.
 
     $ spyder
 
