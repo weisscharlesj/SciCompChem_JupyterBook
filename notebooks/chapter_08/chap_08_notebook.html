@@ -1382,7 +1382,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9cbe3574f0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9f9c4755e0&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/chap_08_notebook_81_1.png" src="../../_images/chap_08_notebook_81_1.png" />
@@ -1513,7 +1513,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f9cbea79730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f9f9cbdaf40&gt;
 </pre></div>
 </div>
 <img alt="../../_images/chap_08_notebook_97_1.png" src="../../_images/chap_08_notebook_97_1.png" />
@@ -1548,7 +1548,7 @@ Hint: Assume this is an isolated system, so q<span class="math notranslate nohig
 \[ \Delta G = \Delta G^o - RT ln(K) \]</div>
 <p>If <span class="math notranslate nohighlight">\(\Delta G^o\)</span> = -1.22 kJ/mol for a chemical reaction, what is the value for K for this reaction at 298 K? Use     the sympy.solve() function to solve this problem. Remember that equilibrium is when <span class="math notranslate nohighlight">\(\Delta\)</span>G = 0 kJ/mol, and       watch your energy units. (R = 8.314 J/mol·K)</p>
 </li>
-<li><p>A matrix or array of x,y coordinates can be rotated on a two-dimensional plane around the origion by multiplying by the following rotation matrix (MR). The angle (<span class="math notranslate nohighlight">\(\theta\)</span>) is in radians, and the coordinates are rotated clockwise around the origin.</p>
+<li><p>A matrix or array of x,y coordinates can be rotated on a two-dimensional plane around the origion by multiplying by the following rotation matrix (M<span class="math notranslate nohighlight">\(_R\)</span>). The angle (<span class="math notranslate nohighlight">\(\theta\)</span>) is in radians, and the coordinates are rotated clockwise around the origin.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} M_R = \left[ \begin{array}{cc} cos(\theta) &amp; -sin(\theta) \\ sin(\theta) &amp; cos(\theta) \end{array} \right] \end{split}\]</div>
 <p>Below is an example using three generic points on the x,y plane.</p>
@@ -1559,7 +1559,7 @@ Hint: Assume this is an isolated system, so q<span class="math notranslate nohig
     =
     \left[ \begin{array}{cc} x'_0 &amp; y'_0 \\ x'_1 &amp; y'_1 \\ x'_2 &amp; y'_2 \end{array} \right]
     \end{split}\]</div>
-<p>a) Given the following coordinates for the four atoms in carbonate (CO32-) measured in angstroms, rotate them       90<span class="math notranslate nohighlight">\(^o\)</span> clockwise. Plot the initial and rotated points in different colors to show that it worked.</p>
+<p>a) Given the following coordinates for the four atoms in carbonate (CO<span class="math notranslate nohighlight">\(_3^{2-}\)</span>) measured in angstroms, rotate them       90<span class="math notranslate nohighlight">\(^o\)</span> clockwise. Plot the initial and rotated points in different colors to show that it worked.</p>
 <div class="math notranslate nohighlight">
 \[ C: (2.00, 2.00) \quad O1: (2.00, 3.28) \quad O2: (0.27, 1.50) \quad O3: (3.73, 1.50) \]</div>
 <p>b) Package the above code into a function that takes an array of points and an angle and performs the above         rotation.</p>
@@ -1573,10 +1573,10 @@ Hint: Assume this is an isolated system, so q<span class="math notranslate nohig
 <li><p>The following is the equation for the work performed by a reversible, isothermal (i.e., constant T) expansion of a piston by a fixed quantity of gas.</p>
 <div class="math notranslate nohighlight">
 \[ w = \int_{v_i}^{v_f} -nRT \frac{1}{V}dV \]</div>
-<p>a) Using SymPy, integrate this expression symbolically for Vi → Vf. Try having SymPy simplify the answer to see     if there is a simpler form.</p>
+<p>a) Using SymPy, integrate this expression symbolically for V<span class="math notranslate nohighlight">\(_i\)</span> <span class="math notranslate nohighlight">\(\rightarrow\)</span> V<span class="math notranslate nohighlight">\(_f\)</span>. Try having SymPy simplify the answer to see     if there is a simpler form.</p>
 <p>b) Integrate the same express above for the expansion of 2.44 mol of He gas from 0.552 L to 1.32 L at 298 K.         Feel free to use either SymPy or SciPy.</p>
 </li>
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">odeint()</span></code>, simulate the concentration of starting material for the second- order reaction below and overlay it with the second-order integrated rate law to show that they agree.</p>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">odeint()</span></code>, simulate the concentration of starting material for the second-order reaction below and overlay it with the second-order integrated rate law to show that they agree.</p>
 <div class="math notranslate nohighlight">
 \[ 2A \rightarrow P \]</div>
 </li>
