@@ -2028,7 +2028,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:1: SyntaxWarning: &quot;is&quot; with a literal. Did you mean &quot;==&quot;?
 &lt;&gt;:1: SyntaxWarning: &quot;is&quot; with a literal. Did you mean &quot;==&quot;?
-/var/folders/cw/g8p9ghtd3_7b10t_kws_b86h0000gp/T/ipykernel_2585/1557232650.py:1: SyntaxWarning: &quot;is&quot; with a literal. Did you mean &quot;==&quot;?
+/var/folders/cw/g8p9ghtd3_7b10t_kws_b86h0000gp/T/ipykernel_2909/1557232650.py:1: SyntaxWarning: &quot;is&quot; with a literal. Did you mean &quot;==&quot;?
   8 is 8.0
 </pre></div>
 </div>
@@ -3044,7 +3044,7 @@ is x &lt; 10?, if so:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/cw/g8p9ghtd3_7b10t_kws_b86h0000gp/T/ipykernel_2585/2693538935.py&quot;</span><span class="gt">, line </span><span class="mi">4</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/cw/g8p9ghtd3_7b10t_kws_b86h0000gp/T/ipykernel_2909/2693538935.py&quot;</span><span class="gt">, line </span><span class="mi">4</span>
     <span class="k">else</span><span class="p">:</span>
          <span class="o">^</span>
 <span class="ne">IndentationError</span>: expected an indented block
@@ -3717,6 +3717,8 @@ number, square
 <li><p>The isotope <span class="math notranslate nohighlight">\(^{137}Cs\)</span> has a half-life about 30.2 years. Using a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop, determine how many half-lives until a 500.0 g sample would have to decay until there is less that 10.00 grams left. To accomplish this, create a counter (<code class="docutils literal notranslate"><span class="pre">counter</span> <span class="pre">=</span> <span class="pre">0</span></code>) and add 1 to it each cycle of a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to keep count.</p></li>
 <li><p>What is a faulty termination condition and what is one safeguard agains them?… aside from not using <code class="docutils literal notranslate"><span class="pre">while</span></code> loops.</p>
 <p>For the following two file I/O problems, first run the following code to generate a test file containing simulated kinetics data.</p>
+</li>
+</ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
     <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;time, [A] </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -3724,22 +3726,23 @@ number, square
         <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">t</span><span class="p">)))</span>
 </pre></div>
 </div>
-</li>
+<ol>
 <li><p>Using Python’s native <a class="reference internal" href="#id33"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">open()</span></code> and <code class="docutils literal notranslate"><span class="pre">readlines()</span></code></span></a> functions, open the <strong>test.txt</strong> file and print each line.</p></li>
 <li><p>Using <a class="reference internal" href="#id34"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">np.genfromtxt()</span></code></span></a>, read the <strong>test.txt</strong> file and append the time values to one list and the concentration values to a second list. You will need to skip a line in the file.</p></li>
 <li><p>Write and test a function, complete with docstring, that solves the Ideal Gas Law for pressure when provided with volume, temperature, and moles of gas (R = 0.08206 L·atm/mol·K) with the following stipulations.</p>
 <p>a) Create one version of the function that takes only positional arguments.</p>
 <p>b) Create a second copy of the function that takes only keyword arguments. Try testing this function with positional       arguments. Does it still work?</p>
 </li>
-<li><p>Complete a function started below that calculates the rate of a single-step chemical reaction nA → P using the differential rate law (Rate = k[A]<span class="math notranslate nohighlight">\(^n\)</span>).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">def</span> <span class="nf">rate</span><span class="p">(</span><span class="n">A0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39; (concentration(M), k = 1.0, n = 1) → rate (M/s)</span>
-<span class="sd">        Takes in the concentration of A (M), the rate constant (k), and the order (n) </span>
-<span class="sd">        and returns the rate (M/s)</span>
-<span class="sd">         &#39;&#39;&#39;</span>   
+<li><p>Complete a function started below that calculates the rate of a single-step chemical reaction nA → P using the differential rate law (Rate = k[A]<span class="math notranslate nohighlight">\(^n\)</span>).</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rate</span><span class="p">(</span><span class="n">A0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; (concentration(M), k = 1.0, n = 1) → rate (M/s)</span>
+<span class="sd">    Takes in the concentration of A (M), the rate constant (k), and the order (n) </span>
+<span class="sd">    and returns the rate (M/s)</span>
+<span class="sd">    &#39;&#39;&#39;</span>   
 </pre></div>
 </div>
-</li>
+<ol class="simple">
 <li><p>DNA is composed of two strands of the nucleotides adenine (A), thymine (T), guanine (G), and cytosine (C). The two strands are lined up with adenine always opposite of thymine and guanine opposite cytosine. For example, if one strand is ATGGC, then the opposite strand is TACCG. Write a function that takes in a DNA strand as a string and prints the opposite DNA strand of nucleotides.</p></li>
 </ol>
 </div>

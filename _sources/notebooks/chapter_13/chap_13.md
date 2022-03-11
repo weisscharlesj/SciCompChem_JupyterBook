@@ -164,7 +164,7 @@ Complete the following problems by writing a Python scripts either in a text edi
      
 1. When an electron in a hydrogen atom relaxes from a higher to a lower energy orbital, a photon is released with the energy described by the below equation. Write and run a Python script that prompts the user to input the initial and final principle quantum numbers (n) and outputs the wavelength (λ) of light emitted.
 
-$ 2.18 \times 10^{-18} \left( \frac{1}{n_i^2} - \frac{1}{n_f^2} \right) \quad \quad E = \frac{hc}{\lambda} $
+$$ 2.18 \times 10^{-18} \left( \frac{1}{n_i^2} - \frac{1}{n_f^2} \right) \quad \quad E = \frac{hc}{\lambda} $$
                   
 2. In the folder titled Problem 2 Kinetic Data you will find synthetic data for the conversion of A $\rightarrow$ P. Both datasets are for first-order reactions. 
  
