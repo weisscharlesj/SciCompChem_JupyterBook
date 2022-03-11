@@ -403,7 +403,7 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="chapter-13-command-line-spyder">
 <span id="id1"></span><h1>Chapter 13: Command Line &amp; Spyder<a class="headerlink" href="#chapter-13-command-line-spyder" title="Permalink to this headline">¶</a></h1>
-<p>Up to this point, we have been running all of our Python scripts through the IPython environment from either a Jupyter notebook or a Python interpreter. A third way to run Python code is to save it as text files and run the code from the computer’s command prompt. The advantage of this approach is that it is more practical for larger scripts and more convenient for doing repetitive tasks like reformatting instrument data. You will need access to the command prompt to run your Python script. If you are using Linux or Mac, launch the Terminal to get access to the Bash command line, and if you are on Windows, you will first need to activate the Bash command line before proceeding.</p>
+<p>Up to this point, we have been running all of our Python scripts through the IPython environment from either a Jupyter notebook or a Python interpreter. A third way to run Python code is to save it as text files and run the code from the computer’s command prompt. The advantage of this approach is that it is more practical for larger scripts and more convenient for doing repetitive tasks like reformatting instrument data. You will need access to the command prompt to run your Python script. If you are using Linux or Mac, launch the Terminal to get access to the Bash command line, and if you are on Windows, you will likely first need to activate the Bash command line before proceeding.</p>
 <div class="section" id="bash-scripting-primer">
 <span id="id2"></span><h2>13.1 Bash Scripting Primer<a class="headerlink" href="#bash-scripting-primer" title="Permalink to this headline">¶</a></h2>
 <p>Bash is the name for the command line terminal used in macOS and unix-like systems such as Linux and the BSD family. It is also now available for Windows 10 but must first be turned on. The Bash command line allows users to perform a wide array of tasks from installing and running software to file management. In section 13.2, you will learn to run Python scripts from the command line, but before you can run a script, you need to be able to navigate your file system and find your Python scripts. This section is a short primer on navigating the file system through the Bash command line.</p>
@@ -419,7 +419,7 @@ const thebe_selector_output = ".output, .cell_output"
 /Users/Me
 </pre></div>
 </div>
-<p>This means that we are currently in the home directory for the user Me. To determine what is in the directory, we can have its contents listed using the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
+<p>This means that we are currently in the home directory for the user Me. To determine what is in the directory, we can list its contents using the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls
 
 Applications   Documents      Movies 
@@ -432,12 +432,12 @@ Pictures       seaborn-data
 </div>
 <div class="section" id="changing-directory">
 <span id="id4"></span><h3>13.1.2 Changing Directory<a class="headerlink" href="#changing-directory" title="Permalink to this headline">¶</a></h3>
-<p>To change the current working directory, use the cd command. This can be used either incrementally by stepping one directory at a time or by providing the full path name such as /Users/Me/Documents/Scripts/.</p>
+<p>To change the current working directory, use the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command. This can be used either incrementally by stepping one directory at a time or by providing the full path name such as /Users/Me/Documents/Scripts/.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ cd Desktop
 </pre></div>
 </div>
-<p>This only allows the user to navigate into folders. To back out of a folder, <code class="docutils literal notranslate"><span class="pre">cd..</span></code> (with two periods) is used.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ cd..
+<p>This only allows the user to navigate into folders. To back out of a folder, <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code> (space with two periods) is used.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ cd ..
 </pre></div>
 </div>
 <p>There is certainly much more that can be done with Bash scripting, but this is enough of a foundation for you to find and run scripts as we will do below.</p>
@@ -457,14 +457,14 @@ Pictures       seaborn-data
 66
 </pre></div>
 </div>
-<p>You just ran your first script from the command line! The output only includes what you print in the Python script. One key difference between a script run in the command line and Python code run in a Jupyter notebook is that when running from the command line, if you want something displayed, you need to explicitly instruct this action using the print() function. In contrast, the Jupyter notebook automatically prints the output of calculations that are not assigned to variables.</p>
+<p>You just ran your first script from the command line! The output only includes what you print in the Python script. One key difference between a script run in the command line and Python code run in a Jupyter notebook is that when running from the command line, if you want something displayed, you need to explicitly instruct this action using the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function. In contrast, the Jupyter notebook automatically prints the output of calculations that are not assigned to variables.</p>
 <p>An alternative way to run the above file without having to navigate to the folder is to provide the file with the full (absolute) path like is shown below.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python /Users/Me/Desktop/first_script.py
 
 98
 </pre></div>
 </div>
-<p>This might seem like a lot of typing. One handy shortcut is to type python and then drag-and-drop the file into the Bash window. This will result in the file path and name being automatically pasted into the command line.</p>
+<p>This might seem like a lot of typing. One handy shortcut is to type <code class="docutils literal notranslate"><span class="pre">python</span></code> followed by a space and then drag-and-drop the file into the Bash window. This will result in the file path and name being automatically pasted into the command line.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python /Users/Me/Desktop/first_script.py
 
 65
@@ -476,14 +476,15 @@ Pictures       seaborn-data
 <p>There are often times when running a script from the command line that you want to be able to include addition inputs or information to the Python script. This may come in the form of a user input or extra files. Below are ways to accomplish this making your script more interactive.</p>
 <div class="section" id="user-inputs">
 <h3>13.3.1 User Inputs<a class="headerlink" href="#user-inputs" title="Permalink to this headline">¶</a></h3>
-<p>In the event you want to user to be able to input values, Python includes an input() function that prompts the user to provide information. For example, if we want to write a script to calculate molecular weights of simple hydrocarbon molecules based on the number of hydrogen and carbon atoms, it would be helpful to allow the user to input the number of hydrogen and carbon atoms instead of altering the script itself.  The argument inside the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function is what is displayed in front of the user to prompt an input. It is important to note that the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function provides the user input as a string. Being that we are expecting integers, we need to convert these strings to integers before calculating the molecular weight of the molecule as has been done below.</p>
+<p>In the event you want to user to be able to input values, Python includes an <code class="docutils literal notranslate"><span class="pre">input()</span></code> function that prompts the user to provide information. For example, if we want to write a script to calculate molecular weights of simple hydrocarbon molecules based on the number of hydrogen and carbon atoms, it would be helpful to allow the user to input the number of hydrogen and carbon atoms instead of altering the script itself.  The argument inside the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function is what is displayed in front of the user to prompt an input. It is important to note that the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function provides the user input as a string. Being that we are expecting integers, we need to convert these strings to integers before calculating the molecular weight of the molecule as has been done below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;H = &#39;</span><span class="p">)</span>
 <span class="n">C</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;C = &#39;</span><span class="p">)</span>
+
+<span class="n">MW</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">H</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.01</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="o">*</span> <span class="mf">12.01</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MW</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>MW = int(H) * 1.01 + int(C) * 12.01
-print(MW)</p>
-<p>Save the above script in a text file named <a class="reference external" href="http://MW.py">MW.py</a> and run it. You are prompted to provide the number of hydrogens and carbons before a molecular weight is calculated and printed.</p>
+<p>Save the above script in a text file named <em><a class="reference external" href="http://MW.py">MW.py</a></em> and run it. You are prompted to provide the number of hydrogens and carbons before a molecular weight is calculated and printed.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python MW.py
   H = 4
   C = 1
@@ -499,9 +500,9 @@ print(MW)</p>
 16.05
 </pre></div>
 </div>
-<p>We can instruct Python to grab the information behind the script file name using the argv function from the sys module. This function brings all information after python as a list which can be accessed using indexing. The above input generates the following list from sys.argv.</p>
-<p>[‘<a class="reference external" href="http://MW.py">MW.py</a>’, ‘4’, ‘1’]
-Now it is just a matter of indexing and converting strings to integers as is done below.</p>
+<p>We can instruct Python to grab the information behind the script file name using the <code class="docutils literal notranslate"><span class="pre">argv()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">sys</span></code> module. This function brings all information after <code class="docutils literal notranslate"><span class="pre">python</span></code> as a list which can be accessed using indexing. The above input generates the following list from <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">['MW.py',</span> <span class="pre">'4',</span> <span class="pre">'1']</span></code></p>
+<p>Now it is just a matter of indexing and converting strings to integers as is done below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">H</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -522,7 +523,7 @@ Now it is just a matter of indexing and converting strings to integers as is don
 <div class="section" id="spyder">
 <span id="id7"></span><h2>13.4 Spyder<a class="headerlink" href="#spyder" title="Permalink to this headline">¶</a></h2>
 <p>While using a text editor to write your scripts works just fine, you may long for some of the features of Jupyter notebooks like how it automatically color codes text based on syntax and provides easy access to function docstrings. To get some of these features back, you can use an Integrated Development Environment (IDE). There are many to choose from, but here we will address Spyder (Scientific Python Development Environment) as it is specifically tailored to scientific applications and comes with the Anaconda installation of Python.</p>
-<p>There are two methods of launching Spyder. The first is to type spyder in the terminal.</p>
+<p>There are two methods of launching Spyder. The first is to type <code class="docutils literal notranslate"><span class="pre">spyder</span></code> in the terminal.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ spyder
 </pre></div>
 </div>

@@ -272,112 +272,105 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Chapter 5: Pandas
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-pandas-objects">
+   5.1 Basic Pandas Objects
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-pandas-objects">
-     5.1 Basic Pandas Objects
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series">
+     5.1.1 Series
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#series">
-       5.1.1 Series
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dataframe">
-       5.1.2 DataFrame
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reading-writing-data">
-     5.2 Reading/Writing Data
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#general-purpose-delimited-file-reader">
-       5.2.1 General-Purpose Delimited File Reader
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comma-separated-values-files">
-       5.2.2 Comma Separated Values Files
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#excel-notebook-files">
-       5.2.3 Excel Notebook Files
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#computer-clipboard">
-       5.2.4 Computer Clipboard
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#examining-data-with-pandas">
-     5.3 Examining Data with Pandas
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#descriptive-functions">
-       5.3.1 Descriptive Functions
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#broadcasted-mathematical-operations">
-       5.3.2 Broadcasted Mathematical Operations
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modifying-dataframes">
-     5.4 Modifying DataFrames
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#insert-columns-via-assignment">
-       5.4.1 Insert Columns via Assignment
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#automatic-alignment">
-       5.4.2 Automatic Alignment
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dropping-columns">
-       5.4.3 Dropping Columns
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#merge">
-       5.4.4 Merge
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#concatenation">
-       5.4.5 Concatenation
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#further-reading">
-     Further Reading
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframe">
+     5.1.2 DataFrame
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-writing-data">
+   5.2 Reading/Writing Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-purpose-delimited-file-reader">
+     5.2.1 General-Purpose Delimited File Reader
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comma-separated-values-files">
+     5.2.2 Comma Separated Values Files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#excel-notebook-files">
+     5.2.3 Excel Notebook Files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computer-clipboard">
+     5.2.4 Computer Clipboard
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examining-data-with-pandas">
+   5.3 Examining Data with Pandas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#descriptive-functions">
+     5.3.1 Descriptive Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#broadcasted-mathematical-operations">
+     5.3.2 Broadcasted Mathematical Operations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modifying-dataframes">
+   5.4 Modifying DataFrames
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insert-columns-via-assignment">
+     5.4.1 Insert Columns via Assignment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#automatic-alignment">
+     5.4.2 Automatic Alignment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dropping-columns">
+     5.4.3 Dropping Columns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#merge">
+     5.4.4 Merge
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#concatenation">
+     5.4.5 Concatenation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   Further Reading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
    Exercises
   </a>
@@ -402,112 +395,105 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Chapter 5: Pandas
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-pandas-objects">
+   5.1 Basic Pandas Objects
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-pandas-objects">
-     5.1 Basic Pandas Objects
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series">
+     5.1.1 Series
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#series">
-       5.1.1 Series
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dataframe">
-       5.1.2 DataFrame
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reading-writing-data">
-     5.2 Reading/Writing Data
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#general-purpose-delimited-file-reader">
-       5.2.1 General-Purpose Delimited File Reader
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comma-separated-values-files">
-       5.2.2 Comma Separated Values Files
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#excel-notebook-files">
-       5.2.3 Excel Notebook Files
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#computer-clipboard">
-       5.2.4 Computer Clipboard
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#examining-data-with-pandas">
-     5.3 Examining Data with Pandas
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#descriptive-functions">
-       5.3.1 Descriptive Functions
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#broadcasted-mathematical-operations">
-       5.3.2 Broadcasted Mathematical Operations
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modifying-dataframes">
-     5.4 Modifying DataFrames
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#insert-columns-via-assignment">
-       5.4.1 Insert Columns via Assignment
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#automatic-alignment">
-       5.4.2 Automatic Alignment
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dropping-columns">
-       5.4.3 Dropping Columns
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#merge">
-       5.4.4 Merge
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#concatenation">
-       5.4.5 Concatenation
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#further-reading">
-     Further Reading
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframe">
+     5.1.2 DataFrame
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-writing-data">
+   5.2 Reading/Writing Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-purpose-delimited-file-reader">
+     5.2.1 General-Purpose Delimited File Reader
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comma-separated-values-files">
+     5.2.2 Comma Separated Values Files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#excel-notebook-files">
+     5.2.3 Excel Notebook Files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computer-clipboard">
+     5.2.4 Computer Clipboard
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examining-data-with-pandas">
+   5.3 Examining Data with Pandas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#descriptive-functions">
+     5.3.1 Descriptive Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#broadcasted-mathematical-operations">
+     5.3.2 Broadcasted Mathematical Operations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modifying-dataframes">
+   5.4 Modifying DataFrames
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insert-columns-via-assignment">
+     5.4.1 Insert Columns via Assignment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#automatic-alignment">
+     5.4.2 Automatic Alignment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dropping-columns">
+     5.4.3 Dropping Columns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#merge">
+     5.4.4 Merge
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#concatenation">
+     5.4.5 Concatenation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   Further Reading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
    Exercises
   </a>
@@ -1523,33 +1509,33 @@ IE,13.6,24.6,5.4,9.3,8.3
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.960640</td>
-      <td>-1.268365</td>
-      <td>7</td>
+      <td>0.092333</td>
+      <td>1.354806</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.482949</td>
-      <td>1.387474</td>
-      <td>5</td>
+      <td>0.385834</td>
+      <td>-0.102900</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.151013</td>
-      <td>-0.260312</td>
+      <td>0.705981</td>
+      <td>-0.567449</td>
       <td>3</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.136795</td>
-      <td>0.320639</td>
-      <td>0</td>
+      <td>0.139770</td>
+      <td>0.923108</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.613278</td>
-      <td>-0.640796</td>
-      <td>2</td>
+      <td>0.309441</td>
+      <td>0.032179</td>
+      <td>3</td>
     </tr>
   </tbody>
 </table>
@@ -1588,33 +1574,33 @@ IE,13.6,24.6,5.4,9.3,8.3
   <tbody>
     <tr>
       <th>995</th>
-      <td>0.951191</td>
-      <td>0.601853</td>
-      <td>4</td>
+      <td>0.241644</td>
+      <td>0.748701</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>0.377305</td>
-      <td>0.420876</td>
-      <td>5</td>
+      <td>0.606193</td>
+      <td>0.068394</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>0.059964</td>
-      <td>1.018831</td>
-      <td>2</td>
+      <td>0.705855</td>
+      <td>1.920156</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>0.858650</td>
-      <td>0.921070</td>
+      <td>0.984402</td>
+      <td>0.964560</td>
       <td>2</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>0.857209</td>
-      <td>-1.309129</td>
-      <td>4</td>
+      <td>0.819417</td>
+      <td>-0.367855</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -1660,45 +1646,45 @@ IE,13.6,24.6,5.4,9.3,8.3
     </tr>
     <tr>
       <th>mean</th>
-      <td>0.491406</td>
-      <td>0.011301</td>
-      <td>3.068000</td>
+      <td>0.508900</td>
+      <td>0.017375</td>
+      <td>3.012000</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.297779</td>
-      <td>0.991650</td>
-      <td>1.764225</td>
+      <td>0.287941</td>
+      <td>0.978804</td>
+      <td>1.743243</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>0.000925</td>
-      <td>-3.136861</td>
+      <td>0.000235</td>
+      <td>-3.473876</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>0.218982</td>
-      <td>-0.698098</td>
+      <td>0.257237</td>
+      <td>-0.638425</td>
       <td>2.000000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>0.490958</td>
-      <td>0.017187</td>
+      <td>0.522680</td>
+      <td>-0.006123</td>
       <td>3.000000</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>0.749950</td>
-      <td>0.714821</td>
+      <td>0.749399</td>
+      <td>0.700698</td>
       <td>4.000000</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>0.999853</td>
-      <td>3.129040</td>
-      <td>10.000000</td>
+      <td>0.999277</td>
+      <td>3.221758</td>
+      <td>9.000000</td>
     </tr>
   </tbody>
 </table>
@@ -1713,17 +1699,16 @@ IE,13.6,24.6,5.4,9.3,8.3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2     237
-3     217
-4     167
-1     127
-5     104
-6      54
-0      53
-7      29
-8       9
-10      2
-9       1
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2    234
+3    204
+4    172
+1    160
+5     98
+6     50
+0     42
+7     28
+8     10
+9      2
 Name: poisson, dtype: int64
 </pre></div>
 </div>
@@ -2798,9 +2783,8 @@ dtype: object
 <li><p>McKinney, W. Python for Data Analysis: Data Wrangling with Pandas, NumPy, and Ipython, 2nd ed.; O’Reilly: Sebastopol, CA, 2018.</p></li>
 </ol>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <p>Complete the following using the pandas library. Avoid using <code class="docutils literal notranslate"><span class="pre">for</span></code> loops unless absolutely necessary.</p>
 <ol>
 <li><p>Below is a table containing the melting points and boiling points of multiple common chemical solvents.</p>
@@ -2842,12 +2826,19 @@ dtype: object
 </tr>
 </tbody>
 </table>
-<p>a) Create a Series containing the boiling points of the above solvents with the solvent names as the indices. Call     the Series to look up the boiling point of ethanol.</p>
-<p>b)  Create a DataFrame that contains both the boiling points and melting points with
-the solvent names as the indices. Call the DataFrame to look up the melting point
-of benzene.</p>
-<p>c) Access the boiling point of pentane in the DataFrame from part b using numerical indices.</p>
 </li>
+</ol>
+<p>Complete the following.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a) Create a Series containing the boiling points of the above solvents with the solvent names as the indices. Call the Series to look up the boiling point of ethanol.
+
+b) Create a DataFrame that contains both the boiling points and melting points with
+ the solvent names as the indices. Call the DataFrame to look up the melting point
+ of benzene.
+ 
+c) Access the boiling point of pentane in the DataFrame from part b using numerical indices.
+</pre></div>
+</div>
+<ol>
 <li><p>Import the attached file <strong>blue1.csv</strong> containing the absorption spectrum of Blue 1 food dye using pandas.</p>
 <p>a) Set the wavelengths as the index values.</p>
 <p>b) Plot the absorption versus wavelength.</p>
@@ -2869,6 +2860,7 @@ of benzene.</p>
 <p>b) Merge the two DataFrames allowing pandas to align the two DataFrames based on carbon number.</p>
 </li>
 </ol>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
