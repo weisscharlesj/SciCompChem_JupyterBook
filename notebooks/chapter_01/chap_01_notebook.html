@@ -2028,7 +2028,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:1: SyntaxWarning: &quot;is&quot; with a literal. Did you mean &quot;==&quot;?
 &lt;&gt;:1: SyntaxWarning: &quot;is&quot; with a literal. Did you mean &quot;==&quot;?
-/var/folders/cw/g8p9ghtd3_7b10t_kws_b86h0000gp/T/ipykernel_18605/1557232650.py:1: SyntaxWarning: &quot;is&quot; with a literal. Did you mean &quot;==&quot;?
+/var/folders/cw/g8p9ghtd3_7b10t_kws_b86h0000gp/T/ipykernel_1159/1557232650.py:1: SyntaxWarning: &quot;is&quot; with a literal. Did you mean &quot;==&quot;?
   8 is 8.0
 </pre></div>
 </div>
@@ -2801,9 +2801,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+12
 4
 </pre></div>
 </div>
@@ -3046,7 +3044,7 @@ is x &lt; 10?, if so:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/cw/g8p9ghtd3_7b10t_kws_b86h0000gp/T/ipykernel_18605/2693538935.py&quot;</span><span class="gt">, line </span><span class="mi">4</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/cw/g8p9ghtd3_7b10t_kws_b86h0000gp/T/ipykernel_1159/2693538935.py&quot;</span><span class="gt">, line </span><span class="mi">4</span>
     <span class="k">else</span><span class="p">:</span>
          <span class="o">^</span>
 <span class="ne">IndentationError</span>: expected an indented block
@@ -3077,7 +3075,7 @@ is x &lt; 10?, if so:
 <div class="section" id="reading-lines">
 <span id="id33"></span><h3>1.8.1.Reading Lines<a class="headerlink" href="#reading-lines" title="Permalink to this headline">¶</a></h3>
 <p>The first method we will cover for reading text files is the native Python method of reading the lines of the text file one at a time. This method requires a little more effort than the other methods in this book, but it also offers much more control.</p>
-<p>There are three general steps for this approach: open the file, read each line one at a time, and close the file. Opening the file is performed with the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function. Be sure to attach the file to a variable to be accessed later. Next, the data is read a single line at a time using the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> method. Being that we need to do the same task over and over, we will use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. Finally, it is a good habit to close the file using the <code class="docutils literal notranslate"><span class="pre">close()</span></code> command. This process is demonstrated below in opening the data shown above in a file called squares.csv.</p>
+<p>There are three general steps for this approach: open the file, read each line one at a time, and close the file. Opening the file is performed with the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function. Be sure to attach the file to a variable to be accessed later. Next, the data is read a single line at a time using the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> method. Being that we need to do the same task over and over, we will use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. Finally, it is a good habit to close the file using the <code class="docutils literal notranslate"><span class="pre">close()</span></code> command. This process is demonstrated below in opening the data shown above in a file called <em>squares.csv</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Unless otherwise indicated, Python searches for the file in the same directory (folder) as the Jupyter notebook.</p>
